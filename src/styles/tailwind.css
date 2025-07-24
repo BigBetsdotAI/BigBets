@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background Colors */
+    --bg-primary: #0896af;
+    --bg-dark: #15141d;
+    --bg-secondary: #1c2238;
+    --bg-tertiary: #1e1c26;
+    --bg-gray: #262626;
+    --bg-cyan: #32cafd;
+    --bg-light-cyan: #53c7ee;
+    --bg-green: #73f6ae;
+    --bg-overlay: #74737319;
+    --bg-muted: #7d818d;
+    --bg-purple: #9b67e9;
+    --bg-violet: #a54ce7;
+    --bg-light-blue: #a7e9ff;
+    --bg-light-green: #c5ffdf;
+    --bg-light-gray: #c8cede;
+    --bg-transparent-gray: #cdcdcd19;
+    --bg-very-light-blue: #dbfaff;
+    --bg-orange: #f59b24;
+    --bg-white: #ffffff;
+    --bg-white-transparent: #ffffff99;
+
+    /* Text Colors */
+    --text-primary: #0896af;
+    --text-dark: #10111a;
+    --text-secondary: #1e1c26;
+    --text-green: #3c6d34;
+    --text-muted: #7a7d9c;
+    --text-gray: #8f9bb7;
+    --text-orange: #f59b24;
+    --text-red: #f62e1a;
+    --text-light: #f6f6f7;
+    --text-white: #ffffff;
+    --text-white-transparent: #ffffffa5;
+
+    /* Header Colors */
+    --header-bg-primary: #141219;
+    --header-bg-overlay: #15141d3f;
+
+    /* ChipView Colors */
+    --chip-bg: #dfdbdb99;
+  }
+}
+
+@layer utilities {
+  /* Background Colors */
+  .bg-primary {
+    background-color: var(--bg-primary);
+  }
+  .bg-dark {
+    background-color: var(--bg-dark);
+  }
+  .bg-secondary {
+    background-color: var(--bg-secondary);
+  }
+  .bg-tertiary {
+    background-color: var(--bg-tertiary);
+  }
+  .bg-gray-custom {
+    background-color: var(--bg-gray);
+  }
+  .bg-cyan {
+    background-color: var(--bg-cyan);
+  }
+  .bg-light-cyan {
+    background-color: var(--bg-light-cyan);
+  }
+  .bg-green-custom {
+    background-color: var(--bg-green);
+  }
+  .bg-overlay {
+    background-color: var(--bg-overlay);
+  }
+  .bg-muted {
+    background-color: var(--bg-muted);
+  }
+  .bg-purple {
+    background-color: var(--bg-purple);
+  }
+  .bg-violet {
+    background-color: var(--bg-violet);
+  }
+  .bg-light-blue {
+    background-color: var(--bg-light-blue);
+  }
+  .bg-light-green {
+    background-color: var(--bg-light-green);
+  }
+  .bg-light-gray {
+    background-color: var(--bg-light-gray);
+  }
+  .bg-transparent-gray {
+    background-color: var(--bg-transparent-gray);
+  }
+  .bg-very-light-blue {
+    background-color: var(--bg-very-light-blue);
+  }
+  .bg-orange {
+    background-color: var(--bg-orange);
+  }
+  .bg-white-transparent {
+    background-color: var(--bg-white-transparent);
+  }
+
+  /* Text Colors */
+  .text-primary-custom {
+    color: var(--text-primary);
+  }
+  .text-dark-custom {
+    color: var(--text-dark);
+  }
+  .text-secondary-custom {
+    color: var(--text-secondary);
+  }
+  .text-green-custom {
+    color: var(--text-green);
+  }
+  .text-muted-custom {
+    color: var(--text-muted);
+  }
+  .text-gray-custom {
+    color: var(--text-gray);
+  }
+  .text-orange-custom {
+    color: var(--text-orange);
+  }
+  .text-red-custom {
+    color: var(--text-red);
+  }
+  .text-light-custom {
+    color: var(--text-light);
+  }
+  .text-white-transparent {
+    color: var(--text-white-transparent);
+  }
+
+  /* Header Colors */
+  .bg-header-primary {
+    background-color: var(--header-bg-primary);
+  }
+  .bg-header-overlay {
+    background-color: var(--header-bg-overlay);
+  }
+
+  /* ChipView Colors */
+  .bg-chip {
+    background-color: var(--chip-bg);
+  }
+}
