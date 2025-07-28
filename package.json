@@ -13,13 +13,14 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://github.com/BigBetsdotAI/bigbets.ai",
+  "homepage": "https://github.com/BigBetsdotAI/BigBets",
   "dependencies": {
     "@dhiwise/component-tagger": "^1.0.10",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.2.0",
     "@tailwindcss/typography": "^0.5.16",
+    "emailjs-com": "^3.2.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

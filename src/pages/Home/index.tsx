@@ -413,7 +413,7 @@ const Home: React.FC = () => {
               </p>
               <div className="text-center">
                 <h3 className="text-base font-inter font-semibold text-primary-custom mb-2">John Wick</h3>
-                <p className="text-base font-inter text-muted-custom mb-4">CEO FutureSphere</p>
+                <p className="text-base font-inter text-muted-custom mb-4">CEO BigBets.AI</p>
                 <div className="flex justify-center gap-5">
                   <img src="/images/img_facebook.svg" alt="Facebook" className="w-4 h-4" />
                   <img src="/images/img_linkedin.svg" alt="LinkedIn" className="w-4 h-4" />
@@ -518,7 +518,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="py-16 sm:py-20 lg:py-24 bg-dark relative overflow-hidden">
+      {/* <div className="py-16 sm:py-20 lg:py-24 bg-dark relative overflow-hidden">
         <div className="absolute inset-0">
           <img src="/images/img_bg_shape.svg" alt="Background" className="w-full h-full object-cover opacity-50" />
         </div>
@@ -527,23 +527,25 @@ const Home: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-inter font-semibold text-light-custom mb-6">
             Start Your First Conversation with BigBets.AI
           </h2>
-          {/* <p className="text-base font-inter text-custom-gray mb-12 max-w-2xl mx-auto">
+          <p className="text-base font-inter text-custom-gray mb-12 max-w-2xl mx-auto">
             Join our 400,000+ person community and contribute to a more private and decentralized internet. Start for free.
-          </p> */}
+          </p>
           <div className="bg-primary border-3 border-primary rounded-[28px] p-1 max-w-lg mx-auto">
             <div className="flex items-center justify-between">
-              <textPath className="text-base font-raleway font-semibold text-white pl-6">Your Email</textPath>
+              <textPath className="text-base font-raleway font-semibold text-white pl-6">
+                <text  className="input-field"></text>
+              </textPath>
               <Button variant="primary" size="small" className="rounded-[22px]">
                 Get Started
               </Button>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* Decorative Elements */}
         {/* <div className="absolute top-16 left-16 w-24 h-30 bg-cyan rounded-[60px] shadow-[0px_4px_250px_#888888ff]"></div>
         <div className="absolute bottom-16 right-16 w-24 h-24 bg-primary rounded-[60px] shadow-[0px_4px_200px_#888888ff]"></div>
         <div className="absolute top-16 right-16 w-24 h-30 bg-orange rounded-[60px] shadow-[0px_4px_250px_#888888ff]"></div> */}
-      </div>
+      {/* </div> */}
 
       {/* Footer */}
       <footer className="bg-tertiary py-16 sm:py-20">

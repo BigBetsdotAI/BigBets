@@ -3,6 +3,7 @@ import Button from '../ui/Button';
 import { HeaderProps } from '../../types/index';
 import logo from '../../logo.png';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions } from '@mui/material';
+import emailjs from 'emailjs-com';
 
 interface HeaderProps {
   className?: string;
@@ -26,9 +27,19 @@ interface HeaderProps {
   //   console.log(email);
   //   handleClose();
   // };
+  function sendEmail(e) {
+    e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
+
+    emailjs.sendForm('service_1dgiuxb', 'template_cm4pp9b', e.target, 'apbmLEz0Ir3KF0xi5')
+      .then((result) => {
+          window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
+      }, (error) => {
+          console.log(error.text);
+      });
+  }
 const Header: React.FC<HeaderProps> = ({ className = '' }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const [open, setOpen] = React.useState(false);
   const menuItems = [
     { label: 'Home', href: '/', active: true },
     { label: 'About', href: '/about', active: false },
@@ -36,6 +47,21 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
     { label: 'Products', href: '/products', active: false },
     { label: 'Research', href: '/research', active: false }
   ];
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const formJson = Object.fromEntries((formData as any).entries());
+    const email = formJson.email;
+    console.log(email);
+    handleClose();
+  };
 
   return (
     <header className={`w-full bg-header-overlay shadow-[0px_4px_54px_#888888ff] ${className}`}>
@@ -71,11 +97,8 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
           <div className="hidden lg:flex">
             {/* <div className="bg-primary border-2 border-primary rounded-3xl p-0.5"> */}
               {/* <div className="bg-header-primary rounded-3xl px-3 py-2.5"> */}
-                 <Button variant="primary" size="medium" className="w-full sm:w-auto hover:color-red">
+                 <Button variant="primary" onClick={handleClickOpen} size="medium" className="w-full sm:w-auto hover:color-red">
                 Contact US
-              </Button>
-      {/* <Button onClick={handleClickOpen}>
-        Open form dialog
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Subscribe</DialogTitle>
@@ -84,15 +107,37 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
             To subscribe to this website, please enter your email address here. We
             will send updates occasionally.
           </DialogContentText>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={sendEmail}>
             <TextField
               autoFocus
               required
               margin="dense"
               id="name"
-              name="email"
+              name="from_name"
+              label="Name"
+              type="text"
+              fullWidth
+              variant="standard"
+            />
+            <TextField
+              autoFocus
+              required
+              margin="dense"
+              id="name"
+              name="from_email"
               label="Email Address"
               type="email"
+              fullWidth
+              variant="standard"
+            />
+            <TextField
+              autoFocus
+              required
+              margin="dense"
+              id="name"
+              name="message"
+              label="Message"
+              type="text"
               fullWidth
               variant="standard"
             />
@@ -102,7 +147,7 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
             </DialogActions>
           </form>
         </DialogContent>
-      </Dialog> */}
+      </Dialog>
               {/* </div> */}
             {/* </div> */}
           </div>
