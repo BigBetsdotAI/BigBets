@@ -144,32 +144,32 @@ const Home: React.FC = () => {
     {
       icon: '/images/img_icon.svg',
       title: 'AI Strategy & Consulting',
-      description: 'Have a project idea and need help implementing it? We are here to consult you and share our knowledge to help you avoid all unnecessary pitfalls.'
+      description: 'Got a project in mind? We help you shape and execute it, offering expert guidance to sidestep common pitfalls and drive success.'
     },
     {
       icon: '/images/img_icon_cyan_700.svg',
       title: 'MLOps/LLMOps',
-      description: 'Have a project idea and need help implementing it? We are here to consult you and share our knowledge to help you avoid all unnecessary pitfalls.'
+      description: 'From deployment to scaling, we bring the expertise needed to streamline your model operations and avoid costly mistakes.'
     },
     {
       icon: '/images/img_icon_cyan_700_36x34.svg',
       title: 'Agentic AI Platforms',
-      description: 'Have a project idea and need help implementing it? We are here to consult you and share our knowledge to help you avoid all unnecessary pitfalls.'
+      description: 'Need help building or integrating Agentic AI platforms? We guide you through every step to ensure smooth and efficient implementation.'
     },
     {
       icon: '/images/img_tabler_icon_message_2_code.svg',
       title: 'Intelligence Document Processing',
-      description: 'Have a project idea and need help implementing it? We are here to consult you and share our knowledge to help you avoid all unnecessary pitfalls.'
+      description: 'Turn unstructured documents into actionable data. We help you design smart workflows and avoid inefficiencies from the start.'
     },
     {
       icon: '/images/img_tabler_icon_message_2_share.svg',
       title: 'Advanced RAG',
-      description: 'Have a project idea and need help implementing it? We are here to consult you and share our knowledge to help you avoid all unnecessary pitfalls.'
+      description: 'Build high-performance RAG systems with our support—from planning to production—while avoiding common technical roadblocks.'
     },
     {
       icon: '/images/img_tabler_icon_dev.svg',
       title: 'Readymade Agents',
-      description: 'Have a project idea and need help implementing it? We are here to consult you and share our knowledge to help you avoid all unnecessary pitfalls.'
+      description: 'Accelerate your project with pre-built AI agents. We help you choose, customize, and integrate them with minimal risk.'
     }
   ];
   const products = [
@@ -412,7 +412,7 @@ const Home: React.FC = () => {
                 During a train ride, a moment of inspiration struck Vasily. He wished for a convenient study tool on his phone to help him prepare for the LSAT. However, such an app did not exist at the time. Determined to overcome this hurdle, Vasily took matters into his own hands and developed one of the earliest and most comprehensive LSAT apps on the market. The app quickly gained popularity, becoming the #1 paid LSAT app for over a year.
               </p>
               <div className="text-center">
-                <h3 className="text-base font-inter font-semibold text-primary-custom mb-2">John Wick</h3>
+                <h3 className="text-base font-inter font-semibold text-primary-custom mb-2">Divya Shukla</h3>
                 <p className="text-base font-inter text-muted-custom mb-4">CEO BigBets.AI</p>
                 <div className="flex justify-center gap-5">
                   <img src="/images/img_facebook.svg" alt="Facebook" className="w-4 h-4" />
