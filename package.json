@@ -13,7 +13,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": ".",
+  "homepage": "https://github.com/BigBetsdotAI/BigBets",
   "dependencies": {
     "@dhiwise/component-tagger": "^1.0.10",
     "@emotion/react": "^11.14.0",
