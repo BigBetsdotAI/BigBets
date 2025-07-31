@@ -5,13 +5,10 @@
   "type": "module",
   "scripts": {
     "start": "vite",
-    "build": "tsc --noCheck && vite build",
+    "build": "vite build",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,md,json}\"",
     "preview": "vite preview",
-    "serve": "vite preview",
-    "type-check": "tsc --noEmit",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "serve": "vite preview"
   },
   "homepage": "https://github.com/BigBetsdotAI/BigBets",
   "dependencies": {
