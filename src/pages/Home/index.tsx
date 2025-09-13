@@ -4,9 +4,9 @@ import Button from '../../components/ui/Button';
 import ChipView from '../../components/ui/ChipView';
 import video from '../../bganimation.mp4';
 import logo from '../../companylogo.png';
-import YT1 from '../../YT1.png';
-import YT2 from '../../YT2.png';
-import YT3 from '../../YT3.png';
+import Blog1 from '../../Blog1.webp';
+import Blog2 from '../../blog2.jpeg';
+import Blog3 from '../../blog3.webp';
 import team1 from '../../Team1.jpeg';
 import team2 from '../../Team2.jpeg';
 import youtube from '../../YouTube.png';
@@ -92,7 +92,7 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ name, role, avatar, conte
 
 const BlogCard1: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
   <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-    <img src={YT1} alt={title} className="w-full h-48 sm:h-56 object-cover rounded-xl mb-4" />
+    <img src={Blog1} alt={title} className="w-full h-48 sm:h-56 object-cover rounded-xl mb-4" />
     <h3 className="text-lg font-inter font-semibold text-dark-custom mb-3 leading-tight">
       {title}
     </h3>
@@ -100,13 +100,13 @@ const BlogCard1: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
       {excerpt}
     </p>
     <div className="flex items-center gap-2">
-      <a className="text-sm font-inter font-medium text-dark-custom" href='https://www.youtube.com/watch?v=sSi_xkqW3mE'>Click Me</a>
+      <a className="text-sm font-inter font-medium text-dark-custom">Click Me</a>
     </div>
   </div>
 );
 const BlogCard2: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
   <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-    <img src={YT2} alt={title} className="w-full h-48 sm:h-56 object-cover rounded-xl mb-4" />
+    <img src={Blog2} alt={title} className="w-full h-48 sm:h-56 object-cover rounded-xl mb-4" />
     <h3 className="text-lg font-inter font-semibold text-dark-custom mb-3 leading-tight">
       {title}
     </h3>
@@ -114,13 +114,13 @@ const BlogCard2: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
       {excerpt}
     </p>
     <div className="flex items-center gap-2">
-      <a className="text-sm font-inter font-medium text-dark-custom" href='https://www.youtube.com/watch?v=kLlnrPkwlXI'>Click Me</a>
+      <a className="text-sm font-inter font-medium text-dark-custom">Click Me</a>
     </div>
   </div>
 );
 const BlogCard3: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
   <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-    <img src={YT3} alt={title} className="w-full h-48 sm:h-56 object-cover rounded-xl mb-4" />
+    <img src={Blog3} alt={title} className="w-full h-48 sm:h-56 object-cover rounded-xl mb-4" />
     <h3 className="text-lg font-inter font-semibold text-dark-custom mb-3 leading-tight">
       {title}
     </h3>
@@ -128,7 +128,7 @@ const BlogCard3: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
       {excerpt}
     </p>
     <div className="flex items-center gap-2">
-      <a className="text-sm font-inter font-medium text-dark-custom" href='https://www.youtube.com/watch?v=qy4Hs_2_LyA'>Click Me</a>
+      <a className="text-sm font-inter font-medium text-dark-custom">Click Me</a>
     </div>
   </div>
 );
@@ -215,19 +215,19 @@ const Home: React.FC = () => {
 
   const blogPosts = [
     {
-      image: 'images/img_blog_img_7_1.png',
-      title: 'MCP vs A2A - The Future of AI Agent Protocols',
+      image: 'images/blog1.webp',
+      title: '👉 BLOG 1',
       // excerpt: 'The rapid advance of artificial intelligence has generated a lot of buzz, with some predicting it...'
     }];
      const blogPosts1 = [
     {
-      image: '/images/img_blog_img_7_1.png',
-      title: '👉 What exactly are AI agents?',
+      image: '/images/blog2.jpeg',
+      title: '👉 BLOG 2',
     }];
      const blogPosts2 = [
     {
-      image: '/images/img_blog_img_5_1.png',
-      title: 'Perplexity AI: What to Use, When, and Why (2025 Breakdown)'
+      image: '/images/blog3.webp',
+      title: '👉 BLOG 3'
     }
   ];
 
@@ -412,7 +412,7 @@ const Home: React.FC = () => {
                 During a train ride, a moment of inspiration struck Vasily. He wished for a convenient study tool on his phone to help him prepare for the LSAT. However, such an app did not exist at the time. Determined to overcome this hurdle, Vasily took matters into his own hands and developed one of the earliest and most comprehensive LSAT apps on the market. The app quickly gained popularity, becoming the #1 paid LSAT app for over a year.
               </p>
               <div className="text-center">
-                <h3 className="text-base font-inter font-semibold text-primary-custom mb-2">Divya Shukla</h3>
+                <h3 className="text-base font-inter font-semibold text-primary-custom mb-2">BigBets.AI</h3>
                 <p className="text-base font-inter text-muted-custom mb-4">CEO BigBets.AI</p>
                 <div className="flex justify-center gap-5">
                   <img src="/images/img_facebook.svg" alt="Facebook" className="w-4 h-4" />

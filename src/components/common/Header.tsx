@@ -8,25 +8,6 @@ import emailjs from 'emailjs-com';
 interface HeaderProps {
   className?: string;
 }
-
-  // const [open, setOpen] = React.useState(false);
-
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   const formData = new FormData(event.currentTarget);
-  //   const formJson = Object.fromEntries((formData as any).entries());
-  //   const email = formJson.email;
-  //   console.log(email);
-  //   handleClose();
-  // };
   function sendEmail(e) {
     e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
 
