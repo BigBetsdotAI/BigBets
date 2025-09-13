@@ -77,7 +77,7 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ name, role, avatar, conte
           <h4 className="font-inter font-medium text-dark-custom">{name}</h4>
           <p className="text-xs text-custom-gray">{role}</p>
         </div>
-        <img src="/images/img_.svg" alt="Quote" className="w-10 h-10" />
+        <img src="/bigbets/images/img_.svg" alt="Quote" className="w-10 h-10" />
       </div>
       <p>{rating}</p>
       <p className="text-sm font-inter text-secondary-custom leading-6">
