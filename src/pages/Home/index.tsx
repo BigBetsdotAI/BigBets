@@ -2,19 +2,19 @@ import React from 'react';
 import Header from '../../components/common/Header';
 import Button from '../../components/ui/Button';
 import ChipView from '../../components/ui/ChipView';
-import video from '../../bganimation.mp4';
-import logo from '../../companylogo.png';
-import Blog1 from '../../Blog1.webp';
-import Blog2 from '../../blog2.jpeg';
-import Blog3 from '../../blog3.webp';
-import team1 from '../../Team1.jpeg';
-import team2 from '../../Team2.jpeg';
-import youtube from '../../YouTube.png';
-import team4 from '../../Team4.jpeg'
-import team6 from '../../Team6.jpeg';
-import team7 from '../../Team7.jpeg';
-import expertise from '../../expertise.png';
-import bigbets from '../../logo.png';
+import video from '../../assets/videos/bganimation.mp4';
+import logo from '../../assets/logos/companylogo.png';
+import Blog1 from '../../assets/images/blog1.webp';
+import Blog2 from '../../assets/images/blog2.jpeg';
+import Blog3 from '../../assets/images/blog3.webp';
+import team1 from '../../assets/images/Team1.jpeg';
+import team2 from '../../assets/images/Team2.jpeg';
+import youtube from '../../assets/images/YouTube.png';
+import team4 from '../../assets/images/Team4.jpeg';
+import team6 from '../../assets/images/Team6.jpeg';
+import team7 from '../../assets/images/Team7.jpeg';
+import expertise from '../../assets/images/expertise.png';
+import bigbets from '../../assets/logos/logo.png';
 
 interface ServiceCardProps {
   icon: string;
@@ -77,12 +77,10 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ name, role, avatar, conte
           <h4 className="font-inter font-medium text-dark-custom">{name}</h4>
           <p className="text-xs text-custom-gray">{role}</p>
         </div>
-        <img src="/bigbets/images/img_.svg" alt="Quote" className="w-10 h-10" />
+        <img src="/bigbets/src/assets/images/img_comma.svg" alt="Quote" className="w-10 h-10" />
       </div>
       <p>{rating}</p>
-      <p className="text-sm font-inter text-secondary-custom leading-6">
-        {content}
-      </p>
+      <p className="text-sm font-inter text-secondary-custom leading-6">{content}</p>
     </div>
     <div className="absolute -bottom-6 left-4 w-[84px] h-[118px] bg-violet rounded-[58px] shadow-[0px_4px_150px_#888888ff]"></div>
     <div className="absolute -bottom-6 right-8 w-[84px] h-[118px] bg-light-blue rounded-[58px] shadow-[0px_4px_150px_#888888ff]"></div>
@@ -96,9 +94,7 @@ const BlogCard1: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
     <h3 className="text-lg font-inter font-semibold text-dark-custom mb-3 leading-tight">
       {title}
     </h3>
-    <p className="text-sm font-inter font-medium text-secondary-custom leading-7 mb-6">
-      {excerpt}
-    </p>
+    <p className="text-sm font-inter font-medium text-secondary-custom leading-7 mb-6">{excerpt}</p>
     <div className="flex items-center gap-2">
       <a className="text-sm font-inter font-medium text-dark-custom">Click Me</a>
     </div>
@@ -110,9 +106,7 @@ const BlogCard2: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
     <h3 className="text-lg font-inter font-semibold text-dark-custom mb-3 leading-tight">
       {title}
     </h3>
-    <p className="text-sm font-inter font-medium text-secondary-custom leading-7 mb-6">
-      {excerpt}
-    </p>
+    <p className="text-sm font-inter font-medium text-secondary-custom leading-7 mb-6">{excerpt}</p>
     <div className="flex items-center gap-2">
       <a className="text-sm font-inter font-medium text-dark-custom">Click Me</a>
     </div>
@@ -124,9 +118,7 @@ const BlogCard3: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
     <h3 className="text-lg font-inter font-semibold text-dark-custom mb-3 leading-tight">
       {title}
     </h3>
-    <p className="text-sm font-inter font-medium text-secondary-custom leading-7 mb-6">
-      {excerpt}
-    </p>
+    <p className="text-sm font-inter font-medium text-secondary-custom leading-7 mb-6">{excerpt}</p>
     <div className="flex items-center gap-2">
       <a className="text-sm font-inter font-medium text-dark-custom">Click Me</a>
     </div>
@@ -137,98 +129,115 @@ const Home: React.FC = () => {
     { id: 'bi-big-data', label: 'BI and Big Data' },
     { id: 'data-science-ai', label: 'Data Science and AI solutions' },
     { id: 'ml-consulting', label: 'ML Consulting & Data Strategy' },
-    { id: 'all-case-studies', label: 'All Case Studies' }
+    { id: 'all-case-studies', label: 'All Case Studies' },
   ];
 
   const services = [
     {
-      icon: '/images/img_icon.svg',
+      icon: '/bigbets/src/assets/images/img_icon.svg',
       title: 'AI Strategy & Consulting',
-      description: 'Got a project in mind? We help you shape and execute it, offering expert guidance to sidestep common pitfalls and drive success.'
+      description:
+        'Got a project in mind? We help you shape and execute it, offering expert guidance to sidestep common pitfalls and drive success.',
     },
     {
-      icon: '/images/img_icon_cyan_700.svg',
+      icon: '/bigbets/src/assets/images/img_icon_cyan_700.svg',
       title: 'MLOps/LLMOps',
-      description: 'From deployment to scaling, we bring the expertise needed to streamline your model operations and avoid costly mistakes.'
+      description:
+        'From deployment to scaling, we bring the expertise needed to streamline your model operations and avoid costly mistakes.',
     },
     {
-      icon: '/images/img_icon_cyan_700_36x34.svg',
+      icon: '/bigbets/src/assets/images/img_icon_cyan_700_36x34.svg',
       title: 'Agentic AI Platforms',
-      description: 'Need help building or integrating Agentic AI platforms? We guide you through every step to ensure smooth and efficient implementation.'
+      description:
+        'Need help building or integrating Agentic AI platforms? We guide you through every step to ensure smooth and efficient implementation.',
     },
     {
-      icon: '/images/img_tabler_icon_message_2_code.svg',
+      icon: '/bigbets/src/assets/images/img_tabler_icon_message_2_code.svg',
       title: 'Intelligence Document Processing',
-      description: 'Turn unstructured documents into actionable data. We help you design smart workflows and avoid inefficiencies from the start.'
+      description:
+        'Turn unstructured documents into actionable data. We help you design smart workflows and avoid inefficiencies from the start.',
     },
     {
-      icon: '/images/img_tabler_icon_message_2_share.svg',
+      icon: '/bigbets/src/assets/images/img_tabler_icon_message_2_share.svg',
       title: 'Advanced RAG',
-      description: 'Build high-performance RAG systems with our support—from planning to production—while avoiding common technical roadblocks.'
+      description:
+        'Build high-performance RAG systems with our support—from planning to production—while avoiding common technical roadblocks.',
     },
     {
-      icon: '/images/img_tabler_icon_dev.svg',
+      icon: '/bigbets/src/assets/images/img_tabler_icon_dev.svg',
       title: 'Readymade Agents',
-      description: 'Accelerate your project with pre-built AI agents. We help you choose, customize, and integrate them with minimal risk.'
-    }
+      description:
+        'Accelerate your project with pre-built AI agents. We help you choose, customize, and integrate them with minimal risk.',
+    },
   ];
   const products = [
     {
-      icon: '/images/img_icon.svg',
+      icon: '/bigbets/src/assets/images/img_icon.svg',
       title: 'RAG Platform',
-      description: 'Have a project idea and need help implementing it? We are here to consult you and share our knowledge to help you avoid all unnecessary pitfalls.'
+      description:
+        'Have a project idea and need help implementing it? We are here to consult you and share our knowledge to help you avoid all unnecessary pitfalls.',
     },
     {
-      icon: '/images/img_icon_cyan_700.svg',
+      icon: '/bigbets/src/assets/images/img_icon_cyan_700.svg',
       title: 'Intelligence Document Processing',
-      description: 'Have a project idea and need help implementing it? We are here to consult you and share our knowledge to help you avoid all unnecessary pitfalls.'
+      description:
+        'Have a project idea and need help implementing it? We are here to consult you and share our knowledge to help you avoid all unnecessary pitfalls.',
     },
     {
-      icon: '/images/img_icon_cyan_700_36x34.svg',
+      icon: '/bigbets/src/assets/images/img_icon_cyan_700_36x34.svg',
       title: 'Agentic AI Platforms',
-      description: 'Have a project idea and need help implementing it? We are here to consult you and share our knowledge to help you avoid all unnecessary pitfalls.'
-    }
-  ];  
+      description:
+        'Have a project idea and need help implementing it? We are here to consult you and share our knowledge to help you avoid all unnecessary pitfalls.',
+    },
+  ];
   const testimonials = [
     {
       name: 'Cameron Williamson',
       role: 'Head of Innovation, Healthcare Tech Company',
-      avatar: '/images/img_avatar.png',
-      content: 'GenAI Consulting helped us turn AI ideas into action. Their team quickly identified high-impact use cases, guided tool selection, and delivered working prototypes within weeks. Clear, practical, and highly collaborative—they made AI adoption feel simple and strategic.',
-      rating: "⭐️⭐️⭐️⭐️⭐️"
+      avatar: '/bigbets/src/assets/images/img_avatar.png',
+      content:
+        'GenAI Consulting helped us turn AI ideas into action. Their team quickly identified high-impact use cases, guided tool selection, and delivered working prototypes within weeks. Clear, practical, and highly collaborative—they made AI adoption feel simple and strategic.',
+      rating: 5,
     },
     {
       name: 'Esther Howard',
       role: 'Operations Lead, Financial Services Firm',
-      avatar: '/images/img_avatar_40x40.png',
-      content: 'The IDP solution transformed how we handle documents—cut processing time by 70% and boosted accuracy. Seamless integration, smart automation, and real results.',
-      rating: "⭐️⭐️⭐️⭐️⭐️"
+      avatar: '/bigbets/src/assets/images/img_avatar_40x40.png',
+      content:
+        'The IDP solution transformed how we handle documents—cut processing time by 70% and boosted accuracy. Seamless integration, smart automation, and real results.',
+      rating: 5,
     },
     {
       name: 'Jenny Wilson',
       role: 'UI/UX Designer',
-      avatar: '/images/img_avatar_1.png',
-      content: 'We were impressed by their deep understanding of U.S. healthcare systems and how seamlessly they applied agentic AI to streamline clinical and operational tasks. The solution wasn’t just smart—it was compliant, scalable, and tailored to our needs.',
-      rating: '⭐️⭐️⭐️⭐️✨'
-    }
+      avatar: '/bigbets/src/assets/images/img_avatar_1.png',
+      content:
+        'We were impressed by their deep understanding of U.S. healthcare systems and how seamlessly they applied agentic AI to streamline clinical and operational tasks. The solution wasn’t just smart—it was compliant, scalable, and tailored to our needs.',
+      rating: 4,
+    },
   ];
 
   const blogPosts = [
     {
       image: 'images/blog1.webp',
       title: '👉 BLOG 1',
-      // excerpt: 'The rapid advance of artificial intelligence has generated a lot of buzz, with some predicting it...'
-    }];
-     const blogPosts1 = [
+      excerpt:
+        'The rapid advance of artificial intelligence has generated a lot of buzz, with some predicting it...',
+    },
+  ];
+  const blogPosts1 = [
     {
-      image: '/images/blog2.jpeg',
+      image: '/bigbets/src/assets/images/blog2.jpeg',
       title: '👉 BLOG 2',
-    }];
-     const blogPosts2 = [
+      excerpt: 'A look at the latest trends and research in AI and data science.',
+    },
+  ];
+  const blogPosts2 = [
     {
-      image: '/images/blog3.webp',
-      title: '👉 BLOG 3'
-    }
+      image: '/bigbets/src/assets/images/blog3.webp',
+      title: '👉 BLOG 3',
+      excerpt: 'Exploring the impact of agentic AI platforms in healthcare.',
+    },
   ];
 
   return (
@@ -236,54 +245,71 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <div className="relative min-h-screen bg-gradient-to-br from-dark via-secondary to-tertiary overflow-hidden">
         {/* Background Elements */}
-        <div className="absolute inset-0">
-          <video className='videoTag' autoPlay loop muted>
-            <source src={video} type='video/mp4' className="w-full h-full object-cover width:100pc"/>
-          </video>
-          {/* <img src="/images/img_elements.png" alt="Background" className="w-full h-full object-cover opacity-80" /> */}
-        </div>
-        
-        {/* Decorative Dots */}
-        <div className="absolute left-8 top-1/2 transform -translate-y-1/2 flex flex-col gap-3">
-          {[...Array(3)].map((_, i) => (
-            <div key={i} className="w-1 h-1 bg-white rounded-full"></div>
-          ))}
-        </div>
+        <div className="relative min-h-screen bg-gradient-to-br from-dark via-secondary to-tertiary overflow-hidden">
+  {/* Background Elements */}
+  <div className="absolute inset-0">
+    <video
+      className="w-full h-full object-cover"
+      autoPlay
+      loop
+      muted
+      playsInline
+    >
+      <source src={video} type="video/mp4" />
+    </video>
+  </div>
 
-        {/* Header */}
-        <Header className="relative z-20" />
+  {/* Decorative Dots */}
+  <div className="absolute left-4 sm:left-8 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 z-10">
+    {[...Array(3)].map((_, i) => (
+      <div key={i} className="w-1 h-1 sm:w-2 sm:h-2 bg-white rounded-full"></div>
+    ))}
+  </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-100px)] px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-raleway font-bold text-white mb-4 leading-tight">
-              GenAI, Agentic AI Implementation At Enterprise Level
-            </h3>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-raleway font-bold bg-gradient-to-r from-primary to-orange bg-clip-text text-transparent mb-8 leading-tight">
-              Bespoke AI Solutions For Your Needs
-            </h2>
-            <p className="text-lg sm:text-xl font-raleway text-white mb-12 max-w-3xl mx-auto leading-relaxed">
-              At BigBets.AI we harness GenAI and Agentic AI to solve real healthcare challenges. Precision, impact and measurable outcomes - That's our promise.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center items-center">
-              <Button variant="primary" size="medium" className="w-full sm:w-auto hover:color-red">
-                GenAI Demo
-              </Button>
-              <Button variant="primary" size="medium" className="w-full sm:w-auto">
-                Agentic AI Demo
-              </Button>
-            </div>
-          </div>
-        </div>
- <br></br>
+  {/* Header */}
+  <Header className="relative z-20" />
+
+  {/* Hero Content */}
+  <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-4 sm:px-6 lg:px-8 text-center">
+    <div className="max-w-4xl mx-auto">
+      {/* Title */}
+      <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-raleway font-bold text-white mb-3 sm:mb-4 leading-tight">
+        GenAI, Agentic AI Implementation At Enterprise Level
+      </h3>
+
+      {/* Sub Title */}
+      <h2 className="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-raleway font-bold bg-gradient-to-r from-primary to-orange bg-clip-text text-transparent mb-6 sm:mb-8 leading-tight">
+        Bespoke AI Solutions For Your Needs
+      </h2>
+
+      {/* Paragraph */}
+      <p className="text-base sm:text-lg md:text-xl font-raleway text-white mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-2">
+        At BigBets.AI we harness GenAI and Agentic AI to solve real healthcare challenges.
+        Precision, impact and measurable outcomes — That’s our promise.
+      </p>
+
+      {/* Buttons */}
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center">
+        <Button variant="primary" size="medium" className="w-full sm:w-auto">
+          GenAI Demo
+        </Button>
+        <Button variant="primary" size="medium" className="w-full sm:w-auto">
+          Agentic AI Demo
+        </Button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <br></br>
         {/* Trusted Companies */}
         <div className="relative z-10 bg-tertiary py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-xl font-inter text-white uppercase tracking-wider mb-6">
               Trusted by 20+ companies around the globe.
             </p>
-            {/* <img src="/images/img_marquee_div.svg" alt="Company logos" className="w-full h-22 object-contain" /> */}
-            <img src={logo} className="w-full h-22 object-contain" ></img>
+            {/* <img src="/bigbets/src/assets/images/img_marquee_div.svg" alt="Company logos" className="w-full h-22 object-contain" /> */}
+            <img src={logo} className="w-full h-22 object-contain"></img>
           </div>
         </div>
       </div>
@@ -300,7 +326,9 @@ const Home: React.FC = () => {
               How We Can Help You
             </h2>
             <p className="text-xl font-manrope text-secondary-custom max-w-3xl mx-auto">
-           20+ years of experience in US healthcare. One bold mission: Outcome first innovation. BigBets.AI deliveres GenAI and Agentic AI solution where they matter most.</p>
+              20+ years of experience in US healthcare. One bold mission: Outcome first innovation.
+              BigBets.AI deliveres GenAI and Agentic AI solution where they matter most.
+            </p>
           </div>
 
           {/* Services Grid */}
@@ -334,7 +362,6 @@ const Home: React.FC = () => {
               <StatItem value="6" label="Six-Day Sprint Cycle" color="text-green-custom" />
               <div className="hidden sm:block w-px h-20 bg-gray-300"></div>
               <StatItem value="15+" label="Projects Shipped" color="text-primary-custom" />
-              
             </div>
           </div>
         </div>
@@ -348,7 +375,7 @@ const Home: React.FC = () => {
             <h1 className="text-lg font-raleway font-bold text-red-custom uppercase tracking-[4px] mb-4">
               Our PRODUCTS
             </h1>
-            </div>
+          </div>
 
           {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
@@ -373,8 +400,8 @@ const Home: React.FC = () => {
           {/* <div className="flex flex-col sm:flex-row justify-between items-center gap-6 mb-12">
             <ChipView items={chipItems} className="flex-1" />
             <div className="flex items-center gap-4">
-              <img src="/images/img_left_arrow.svg" alt="Previous" className="w-10 h-10 rounded-lg cursor-pointer hover:bg-gray-100" />
-              <img src="/images/img_right_arrow.svg" alt="Next" className="w-10 h-10 rounded-lg cursor-pointer hover:bg-gray-100" />
+              <img src="/bigbets/src/assets/images/img_left_arrow.svg" alt="Previous" className="w-10 h-10 rounded-lg cursor-pointer hover:bg-gray-100" />
+              <img src="/bigbets/src/assets/images/img_right_arrow.svg" alt="Next" className="w-10 h-10 rounded-lg cursor-pointer hover:bg-gray-100" />
             </div>
           </div> */}
 
@@ -401,7 +428,8 @@ const Home: React.FC = () => {
               Meet our team
             </h2>
             <p className="text-base font-raleway text-secondary-custom max-w-3xl mx-auto">
-              Meet our passionate and talented team, committed to delivering exceptional results, driving innovation, and transforming your vision into reality.
+              Meet our passionate and talented team, committed to delivering exceptional results,
+              driving innovation, and transforming your vision into reality.
             </p>
           </div>
 
@@ -409,14 +437,29 @@ const Home: React.FC = () => {
           <div className="relative mb-12">
             <div className="bg-white rounded-2xl shadow-[1px_-2px_9px_#00000026] p-8 max-w-4xl mx-auto">
               <p className="text-base font-raleway text-secondary-custom text-center mb-8 leading-relaxed">
-                During a train ride, a moment of inspiration struck Vasily. He wished for a convenient study tool on his phone to help him prepare for the LSAT. However, such an app did not exist at the time. Determined to overcome this hurdle, Vasily took matters into his own hands and developed one of the earliest and most comprehensive LSAT apps on the market. The app quickly gained popularity, becoming the #1 paid LSAT app for over a year.
+                During a train ride, a moment of inspiration struck Vasily. He wished for a
+                convenient study tool on his phone to help him prepare for the LSAT. However, such
+                an app did not exist at the time. Determined to overcome this hurdle, Vasily took
+                matters into his own hands and developed one of the earliest and most comprehensive
+                LSAT apps on the market. The app quickly gained popularity, becoming the #1 paid
+                LSAT app for over a year.
               </p>
               <div className="text-center">
-                <h3 className="text-base font-inter font-semibold text-primary-custom mb-2">BigBets.AI</h3>
+                <h3 className="text-base font-inter font-semibold text-primary-custom mb-2">
+                  BigBets.AI
+                </h3>
                 <p className="text-base font-inter text-muted-custom mb-4">CEO BigBets.AI</p>
                 <div className="flex justify-center gap-5">
-                  <img src="/images/img_facebook.svg" alt="Facebook" className="w-4 h-4" />
-                  <img src="/images/img_linkedin.svg" alt="LinkedIn" className="w-4 h-4" />
+                  <img
+                    src="/bigbets/src/assets/images/img_facebook.svg"
+                    alt="Facebook"
+                    className="w-4 h-4"
+                  />
+                  <img
+                    src="/bigbets/src/assets/images/img_linkedin.svg"
+                    alt="LinkedIn"
+                    className="w-4 h-4"
+                  />
                 </div>
               </div>
             </div>
@@ -424,20 +467,40 @@ const Home: React.FC = () => {
           </div>
 
           {/* Team Photos */}
-          <div className="flex justify-center items-center gap-4 mb-8 overflow-x-auto">
-            <img src={team1} alt="Team member" className="w-32 sm:w-44 h-32 sm:h-44 rounded-full object-cover flex-shrink-0" />
-            <img src={team2} alt="Team member" className="w-36 sm:w-48 h-36 sm:h-48 rounded-full object-cover flex-shrink-0 -ml-4" />
-            {/* <img src={team3} alt="Team member" className="w-40 sm:w-56 h-40 sm:h-56 rounded-full object-cover flex-shrink-0 -ml-4" /> */}
-            <img src={team4} alt="Team member" className="w-48 sm:w-70 h-48 sm:h-70 rounded-full object-cover flex-shrink-0 -ml-6" />
-            {/* <img src={team5} alt="Team member" className="w-40 sm:w-56 h-40 sm:h-56 rounded-full object-cover flex-shrink-0 -ml-4" /> */}
-            <img src={team6} alt="Team member" className="w-36 sm:w-48 h-36 sm:h-48 rounded-full object-cover flex-shrink-0 -ml-4" />
-            <img src={team7} alt="Team member" className="w-32 sm:w-44 h-32 sm:h-44 rounded-full object-cover flex-shrink-0 -ml-4" />
+          <div className="flex flex-wrap justify-center items-center gap-0 mb-8">
+            <img
+              src={team1}
+              alt="Team member"
+              className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0"
+            />
+            <img
+              src={team2}
+              alt="Team member"
+              className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0"
+            />
+            {/* <img src={team3} alt="Team member" className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0" /> */}
+            <img
+              src={team4}
+              alt="Team member"
+              className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0"
+            />
+            {/* <img src={team5} alt="Team member" className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0" /> */}
+            <img
+              src={team6}
+              alt="Team member"
+              className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0"
+            />
+            <img
+              src={team7}
+              alt="Team member"
+              className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0"
+            />
           </div>
 
           {/* Navigation */}
           {/* <div className="flex justify-center gap-4">
-            <img src="/images/img_left_arrow_yellow_800.svg" alt="Previous" className="w-10 h-10 rounded-lg cursor-pointer hover:bg-gray-100" />
-            <img src="/images/img_right_arrow.svg" alt="Next" className="w-10 h-10 rounded-lg cursor-pointer hover:bg-gray-100" />
+            <img src="/bigbets/src/assets/images/img_left_arrow_yellow_800.svg" alt="Previous" className="w-10 h-10 rounded-lg cursor-pointer hover:bg-gray-100" />
+            <img src="/bigbets/src/assets/images/img_right_arrow.svg" alt="Next" className="w-10 h-10 rounded-lg cursor-pointer hover:bg-gray-100" />
           </div> */}
         </div>
       </div>
@@ -452,9 +515,13 @@ const Home: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan via-primary to-orange opacity-20 rounded-3xl"></div>
                 <div className="relative z-10 flex items-center justify-center">
                   {/* <div className="bg-very-light-blue rounded-full p-8 sm:p-12"> */}
-                    {/* <div className="w-32 h-32 sm:w-40 sm:h-40 bg-very-light-blue rounded-full flex items-center justify-center"> */}
-                      <img src={expertise} alt="AI Visualization" className="w-full h-full object-contain" />
-                    {/* </div> */}
+                  {/* <div className="w-32 h-32 sm:w-40 sm:h-40 bg-very-light-blue rounded-full flex items-center justify-center"> */}
+                  <img
+                    src={expertise}
+                    alt="AI Visualization"
+                    className="w-full h-full object-contain"
+                  />
+                  {/* </div> */}
                   {/* </div> */}
                 </div>
                 {/* Decorative Elements */}
@@ -473,7 +540,8 @@ const Home: React.FC = () => {
               </h2>
               <div className="space-y-4 mb-8">
                 <p className="text-lg font-raleway font-light text-secondary-custom">
-                  From LLM-driven automation to autonomous agents, our AI solutions are built for real-world healthccare impact.
+                  From LLM-driven automation to autonomous agents, our AI solutions are built for
+                  real-world healthccare impact.
                 </p>
                 {/* <p className="text-lg font-raleway font-light text-secondary-custom">
                   companies claim AI as a strategic business priority
@@ -541,8 +609,8 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div> */}
-        {/* Decorative Elements */}
-        {/* <div className="absolute top-16 left-16 w-24 h-30 bg-cyan rounded-[60px] shadow-[0px_4px_250px_#888888ff]"></div>
+      {/* Decorative Elements */}
+      {/* <div className="absolute top-16 left-16 w-24 h-30 bg-cyan rounded-[60px] shadow-[0px_4px_250px_#888888ff]"></div>
         <div className="absolute bottom-16 right-16 w-24 h-24 bg-primary rounded-[60px] shadow-[0px_4px_200px_#888888ff]"></div>
         <div className="absolute top-16 right-16 w-24 h-30 bg-orange rounded-[60px] shadow-[0px_4px_250px_#888888ff]"></div> */}
       {/* </div> */}
@@ -555,16 +623,34 @@ const Home: React.FC = () => {
             <div className="lg:col-span-2">
               <h3 className="text-2xl font-rubik font-bold text-white mb-6">
                 {/* <span className="text-white">BigBets.</span> */}
-                 <img src={bigbets} alt="logo" className="w-20 h-20" />
+                <img src={bigbets} alt="logo" className="w-20 h-20" />
                 {/* <span className="bg-gradient-to-r from-primary to-orange bg-clip-text text-transparent">AI</span> */}
               </h3>
               <p className="text-sm font-inter text-white-transparent mb-8 leading-relaxed">
                 With lots of unique blocks, you can easily build AI driven projects without coding.
               </p>
               <div className="flex gap-5">
-                <a href='https://www.youtube.com/@BigBets.AI_Official'><img src={youtube} alt="Facebook" className="w-4 h-4 cursor-pointer hover:opacity-80" /></a>
-                <a href='https://www.instagram.com/bigbets.ai_official/'><img src="/images/img_logo_instagram.svg" alt="Instagram" className="w-4 h-4 cursor-pointer hover:opacity-80" /></a>
-                <a href=''><img src="/images/img_shape_blue_gray_400.svg" alt="Twitter" className="w-4 h-4 cursor-pointer hover:opacity-80" /></a>
+                <a href="https://www.youtube.com/@BigBets.AI_Official">
+                  <img
+                    src={youtube}
+                    alt="Facebook"
+                    className="w-4 h-4 cursor-pointer hover:opacity-80"
+                  />
+                </a>
+                <a href="https://www.instagram.com/bigbets.ai_official/">
+                  <img
+                    src="/bigbets/src/assets/images/img_logo_instagram.svg"
+                    alt="Instagram"
+                    className="w-4 h-4 cursor-pointer hover:opacity-80"
+                  />
+                </a>
+                <a href="">
+                  <img
+                    src="/bigbets/src/assets/images/img_shape_blue_gray_400.svg"
+                    alt="Twitter"
+                    className="w-4 h-4 cursor-pointer hover:opacity-80"
+                  />
+                </a>
               </div>
             </div>
 
@@ -573,7 +659,11 @@ const Home: React.FC = () => {
               <h4 className="text-sm font-inter text-white-transparent mb-4">Company</h4>
               <div className="space-y-3">
                 {['About us', 'Contact us', 'Careers', 'Research'].map((link) => (
-                  <a key={link} href="#" className="block text-base font-inter text-white hover:text-primary transition-colors">
+                  <a
+                    key={link}
+                    href="#"
+                    className="block text-base font-inter text-white hover:text-primary transition-colors"
+                  >
                     {link}
                   </a>
                 ))}
@@ -584,11 +674,17 @@ const Home: React.FC = () => {
             <div>
               <h4 className="text-sm font-inter text-white-transparent mb-4">Product</h4>
               <div className="space-y-3">
-                {['RAG Platform', 'Intelligence Document Processing', 'Agentic AI Platforms'].map((link) => (
-                  <a key={link} href="#" className="block text-base font-inter text-white hover:text-primary transition-colors">
-                    {link}
-                  </a>
-                ))}
+                {['RAG Platform', 'Intelligence Document Processing', 'Agentic AI Platforms'].map(
+                  (link) => (
+                    <a
+                      key={link}
+                      href="#"
+                      className="block text-base font-inter text-white hover:text-primary transition-colors"
+                    >
+                      {link}
+                    </a>
+                  )
+                )}
               </div>
             </div>
 
@@ -596,8 +692,19 @@ const Home: React.FC = () => {
             <div>
               <h4 className="text-sm font-inter text-white-transparent mb-4">Services</h4>
               <div className="space-y-3">
-                {['AI Consulting', 'Advanced RAG', 'Readymade Agents', 'MLOps/LLMOps', 'Intelligence Document Processing', 'Agentic AI Platforms'].map((link) => (
-                  <a key={link} href="#" className="block text-base font-inter text-white hover:text-primary transition-colors">
+                {[
+                  'AI Consulting',
+                  'Advanced RAG',
+                  'Readymade Agents',
+                  'MLOps/LLMOps',
+                  'Intelligence Document Processing',
+                  'Agentic AI Platforms',
+                ].map((link) => (
+                  <a
+                    key={link}
+                    href="#"
+                    className="block text-base font-inter text-white hover:text-primary transition-colors"
+                  >
                     {link}
                   </a>
                 ))}
@@ -609,7 +716,7 @@ const Home: React.FC = () => {
         {/* Scroll to Top */}
         {/* <div className="fixed bottom-8 right-8">
           <div className="bg-orange rounded-full p-3 cursor-pointer hover:bg-orange/90 transition-colors shadow-lg">
-            <img src="/images/img_vector_white_a700.svg" alt="Scroll to top" className="w-6 h-6" />
+            <img src="/bigbets/src/assets/images/img_vector_white_a700.svg" alt="Scroll to top" className="w-6 h-6" />
           </div>
         </div> */}
       </footer>
