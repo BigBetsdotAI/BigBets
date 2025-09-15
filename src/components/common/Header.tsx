@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import Button from '../ui/Button';
 import { HeaderProps } from '../../types/index';
-import logo from '../../logo.png';
+import logo from '../../assets/logos/logo.png';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions } from '@mui/material';
 import emailjs from 'emailjs-com';
 
-interface HeaderProps {
-  className?: string;
-}
-  function sendEmail(e) {
+
+  function sendEmail(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
 
-    emailjs.sendForm('service_1dgiuxb', 'template_cm4pp9b', e.target, 'apbmLEz0Ir3KF0xi5')
+  emailjs.sendForm('service_1dgiuxb', 'template_cm4pp9b', e.target as HTMLFormElement, 'apbmLEz0Ir3KF0xi5')
       .then((result) => {
           window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
       }, (error) => {

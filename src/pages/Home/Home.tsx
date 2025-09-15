@@ -1,0 +1,3 @@
+import React from 'react';
+// ...existing code from Home page...
+// (Full Home page code pasted here)

@@ -8,6 +8,7 @@ const AppRoutes = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="/bigbets" element={<HomePage />} />
       </Routes>
     </Router>
