@@ -20,11 +20,11 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [open, setOpen] = React.useState(false);
   const menuItems = [
-    { label: 'Home', href: '/', active: true },
-    { label: 'About', href: '/about', active: false },
-    { label: 'Services', href: '/services', active: false },
-    { label: 'Products', href: '/products', active: false },
-    { label: 'Research', href: '/research', active: false }
+    { label: 'Home', href: '#home', active: true },
+    { label: 'About', href: '#about', active: false },
+    { label: 'Services', href: '#services', active: false },
+    { label: 'Products', href: '#products', active: false },
+    { label: 'Research', href: '#research', active: false }
   ];
   const handleClickOpen = () => {
     setOpen(true);
