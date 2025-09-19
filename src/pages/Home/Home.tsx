@@ -3,20 +3,19 @@ import Header from '../../components/common/Header';
 import { useRef } from 'react';
 import Button from '../../components/ui/Button';
 import ChipView from '../../components/ui/ChipView';
-import video from '../../assets/videos/bganimation.mp4';
-import logo from '../../assets/logos/companylogo.png';
-import Blog1 from '../../assets/images/blog1.webp';
-import Blog2 from '../../assets/images/blog2.jpeg';
-import Blog3 from '../../assets/images/blog3.webp';
-import team1 from '../../assets/images/Team1.jpeg';
-import team2 from '../../assets/images/Team2.jpeg';
-import youtube from '../../assets/images/YouTube.png';
-import team4 from '../../assets/images/Team4.jpeg';
-import team6 from '../../assets/images/Team6.jpeg';
-import team7 from '../../assets/images/Team7.jpeg';
-import expertise from '../../assets/images/expertise.png';
-import bigbets from '../../assets/logos/logo.png';
-
+const video = 'https://bitbet33-images-apne1.s3.ap-northeast-1.amazonaws.com/bganimation.mp4';
+const logo = 'https://ap-northeast-1.console.aws.amazon.com/s3/object/bitbet33-images-apne1';
+const Blog1 = 'https://bitbet33-images-apne1.s3.ap-northeast-1.amazonaws.com/blog1.webp';
+const Blog2 = 'https://bitbet33-images-apne1.s3.ap-northeast-1.amazonaws.com/blog2.jpeg';
+const Blog3 = 'https://bitbet33-images-apne1.s3.ap-northeast-1.amazonaws.com/blog3.webp';
+const team1 = 'https://bitbet33-images-apne1.s3.ap-northeast-1.amazonaws.com/Team1.jpeg';
+const team2 = 'https://bitbet33-images-apne1.s3.ap-northeast-1.amazonaws.com/Team2.jpeg';
+const youtube = 'https://bitbet33-images-apne1.s3.ap-northeast-1.amazonaws.com/YouTube.png';
+const team4 = 'https://bitbet33-images-apne1.s3.ap-northeast-1.amazonaws.com/Team4.jpeg';
+const team6 = 'https://bitbet33-images-apne1.s3.ap-northeast-1.amazonaws.com/Team6.jpeg';
+const team7 = 'https://bitbet33-images-apne1.s3.ap-northeast-1.amazonaws.com/Team7.jpeg';
+const expertise = 'https://bitbet33-images-apne1.s3.ap-northeast-1.amazonaws.com/expertise.png';
+const bigbets = 'https://bitbet33-images-apne1.s3.ap-northeast-1.amazonaws.com/logo.png';
 interface ServiceCardProps {
   icon: string;
   title: string;
@@ -115,7 +114,7 @@ const BlogCard2: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
 );
 const BlogCard3: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
   <div className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-    <img src={Blog3} alt={title} className="w-full h-48 sm:h-56 object-cover rounded-xl mb-4" />
+  <img src={Blog3} alt={title} className="w-full h-48 sm:h-56 object-cover rounded-xl mb-4" />
     <h3 className="text-lg font-inter font-semibold text-dark-custom mb-3 leading-tight">
       {title}
     </h3>
