@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Loader from '../../components/common/Loader';
 import Header from '../../components/common/Header';
 import { useRef } from 'react';
 import Button from '../../components/ui/Button';
 import ChipView from '../../components/ui/ChipView';
-import video from '../../assets/videos/bganimation.mp4';
-import logo from '../../assets/logos/companylogo.png';
-import Blog1 from '../../assets/images/blog1.webp';
-import Blog2 from '../../assets/images/blog2.jpeg';
-import Blog3 from '../../assets/images/blog3.webp';
-import team1 from '../../assets/images/Team1.jpeg';
-import team2 from '../../assets/images/Team2.jpeg';
-import youtube from '../../assets/images/YouTube.png';
-import team4 from '../../assets/images/Team4.jpeg';
-import team6 from '../../assets/images/Team6.jpeg';
-import team7 from '../../assets/images/Team7.jpeg';
-import expertise from '../../assets/images/expertise.png';
-import bigbets from '../../assets/logos/logo.png';
+const video = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/videos/bganimation.mp4";
+const logo = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/logos/companylogo.png";
+const Blog1 = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/blog1.webp";
+const Blog2 = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/blog2.jpeg";
+const Blog3 = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/blog3.webp";
+const team1 = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/Team1.jpeg";
+const team2 = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/Team2.jpeg";
+const youtube = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/YouTube.png";
+const team4 = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/Team4.jpeg";
+const team6 = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/Team6.jpeg";
+const team7 = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/Team7.jpeg";
+const expertise = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/expertise.png";
+const bigbets = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/logos/logo.png";
 
 interface ServiceCardProps {
   icon: string;
@@ -70,18 +71,30 @@ const StatItem: React.FC<StatItemProps> = ({ value, label, color }) => (
 );
 
 const TestimonialCard: React.FC<TestimonialProps> = ({ name, role, avatar, content, rating }) => (
-  <div className="relative w-full max-w-sm mx-auto">
-    <div className="bg-white rounded-lg shadow-[0px_1px_7px_#0000003f] p-6 relative z-10">
+  <div className="relative w-full max-w-sm mx-auto min-h-[340px] flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+    <div className="bg-white rounded-xl shadow-[0px_1px_7px_#0000003f] p-8 relative z-10 flex flex-col min-h-[340px] transition-all duration-300 hover:shadow-2xl">
       <div className="flex items-center gap-3 mb-4">
         <img src={avatar} alt={name} className="w-10 h-10 rounded-lg" />
         <div className="flex-1">
           <h4 className="font-inter font-medium text-dark-custom">{name}</h4>
           <p className="text-xs text-custom-gray">{role}</p>
         </div>
-        <img src="/bigbets/src/assets/images/img_comma.svg" alt="Quote" className="w-10 h-10" />
+        <img src="https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_comma.svg" alt="Quote" className="w-10 h-10 opacity-20" />
       </div>
-      <p>{rating}</p>
-      <p className="text-sm font-inter text-secondary-custom leading-6">{content}</p>
+      {/* Star Rating */}
+      <div className="flex items-center mb-2">
+        {[...Array(5)].map((_, i) => (
+          <svg
+            key={i}
+            className={`w-5 h-5 ${i < rating ? 'text-yellow-400' : 'text-gray-300'}`}
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z" />
+          </svg>
+        ))}
+      </div>
+      <p className="text-sm font-inter text-secondary-custom leading-6 flex-1">{content}</p>
     </div>
     <div className="absolute -bottom-6 left-4 w-[84px] h-[118px] bg-violet rounded-[58px] shadow-[0px_4px_150px_#888888ff]"></div>
     <div className="absolute -bottom-6 right-8 w-[84px] h-[118px] bg-light-blue rounded-[58px] shadow-[0px_4px_150px_#888888ff]"></div>
@@ -126,6 +139,19 @@ const BlogCard3: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
   </div>
 );
 const Home: React.FC = () => {
+  const [loading, setLoading] = useState(true);
+  const headerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+  if (loading) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Loader />
+      </div>
+    );
+  }
   const chipItems = [
     { id: 'bi-big-data', label: 'BI and Big Data' },
     { id: 'data-science-ai', label: 'Data Science and AI solutions' },
@@ -135,37 +161,37 @@ const Home: React.FC = () => {
 
   const services = [
     {
-      icon: '/bigbets/src/assets/images/img_icon.svg',
+  icon: 'https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_icon.svg',
       title: 'AI Strategy & Consulting',
       description:
         'Got a project in mind? We help you shape and execute it, offering expert guidance to sidestep common pitfalls and drive success.',
     },
     {
-      icon: '/bigbets/src/assets/images/img_icon_cyan_700.svg',
+  icon: 'https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_icon_cyan_700.svg',
       title: 'MLOps/LLMOps',
       description:
         'From deployment to scaling, we bring the expertise needed to streamline your model operations and avoid costly mistakes.',
     },
     {
-      icon: '/bigbets/src/assets/images/img_icon_cyan_700_36x34.svg',
+  icon: 'https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_icon_cyan_700_36x34.svg',
       title: 'Agentic AI Platforms',
       description:
         'Need help building or integrating Agentic AI platforms? We guide you through every step to ensure smooth and efficient implementation.',
     },
     {
-      icon: '/bigbets/src/assets/images/img_tabler_icon_message_2_code.svg',
+  icon: 'https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_tabler_icon_message_2_code.svg',
       title: 'Intelligence Document Processing',
       description:
         'Turn unstructured documents into actionable data. We help you design smart workflows and avoid inefficiencies from the start.',
     },
     {
-      icon: '/bigbets/src/assets/images/img_tabler_icon_message_2_share.svg',
+  icon: 'https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_tabler_icon_message_2_share.svg',
       title: 'Advanced RAG',
       description:
         'Build high-performance RAG systems with our support—from planning to production—while avoiding common technical roadblocks.',
     },
     {
-      icon: '/bigbets/src/assets/images/img_tabler_icon_dev.svg',
+  icon: 'https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_tabler_icon_dev.svg',
       title: 'Readymade Agents',
       description:
         'Accelerate your project with pre-built AI agents. We help you choose, customize, and integrate them with minimal risk.',
@@ -173,19 +199,19 @@ const Home: React.FC = () => {
   ];
   const products = [
     {
-      icon: '/bigbets/src/assets/images/img_icon.svg',
+  icon: 'https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_icon.svg',
       title: 'RAG Platform',
       description:
         'Have a project idea and need help implementing it? We are here to consult you and share our knowledge to help you avoid all unnecessary pitfalls.',
     },
     {
-      icon: '/bigbets/src/assets/images/img_icon_cyan_700.svg',
+  icon: 'https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_icon_cyan_700.svg',
       title: 'Intelligence Document Processing',
       description:
         'Have a project idea and need help implementing it? We are here to consult you and share our knowledge to help you avoid all unnecessary pitfalls.',
     },
     {
-      icon: '/bigbets/src/assets/images/img_icon_cyan_700_36x34.svg',
+  icon: 'https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_icon_cyan_700_36x34.svg',
       title: 'Agentic AI Platforms',
       description:
         'Have a project idea and need help implementing it? We are here to consult you and share our knowledge to help you avoid all unnecessary pitfalls.',
@@ -195,7 +221,7 @@ const Home: React.FC = () => {
     {
       name: 'Cameron Williamson',
       role: 'Head of Innovation, Healthcare Tech Company',
-      avatar: '/bigbets/src/assets/images/img_avatar.png',
+  avatar: 'https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_avatar.png',
       content:
         'GenAI Consulting helped us turn AI ideas into action. Their team quickly identified high-impact use cases, guided tool selection, and delivered working prototypes within weeks. Clear, practical, and highly collaborative—they made AI adoption feel simple and strategic.',
       rating: 5,
@@ -203,7 +229,7 @@ const Home: React.FC = () => {
     {
       name: 'Esther Howard',
       role: 'Operations Lead, Financial Services Firm',
-      avatar: '/bigbets/src/assets/images/img_avatar_40x40.png',
+  avatar: 'https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_avatar_40x40.png',
       content:
         'The IDP solution transformed how we handle documents—cut processing time by 70% and boosted accuracy. Seamless integration, smart automation, and real results.',
       rating: 5,
@@ -211,7 +237,7 @@ const Home: React.FC = () => {
     {
       name: 'Jenny Wilson',
       role: 'UI/UX Designer',
-      avatar: '/bigbets/src/assets/images/img_avatar_1.png',
+  avatar: 'https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_avatar_1.png',
       content:
         'We were impressed by their deep understanding of U.S. healthcare systems and how seamlessly they applied agentic AI to streamline clinical and operational tasks. The solution wasn’t just smart—it was compliant, scalable, and tailored to our needs.',
       rating: 4,
@@ -228,20 +254,19 @@ const Home: React.FC = () => {
   ];
   const blogPosts1 = [
     {
-      image: '/bigbets/src/assets/images/blog2.jpeg',
+  image: 'https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/blog2.jpeg',
       title: '👉 BLOG 2',
       excerpt: 'A look at the latest trends and research in AI and data science.',
     },
   ];
   const blogPosts2 = [
     {
-      image: '/bigbets/src/assets/images/blog3.webp',
+  image: 'https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/blog3.webp',
       title: '👉 BLOG 3',
       excerpt: 'Exploring the impact of agentic AI platforms in healthcare.',
     },
   ];
 
-  const headerRef = useRef<HTMLDivElement>(null);
   const handleFooterContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
     // Find the header contact button and trigger click
@@ -270,12 +295,6 @@ const Home: React.FC = () => {
     </video>
   </div>
 
-  {/* Decorative Dots */}
-  <div className="absolute left-4 sm:left-8 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 z-10">
-    {[...Array(3)].map((_, i) => (
-      <div key={i} className="w-1 h-1 sm:w-2 sm:h-2 bg-white rounded-full"></div>
-    ))}
-  </div>
 
   {/* Header */}
       <div ref={headerRef}>
@@ -464,12 +483,12 @@ const Home: React.FC = () => {
                 <p className="text-base font-inter text-muted-custom mb-4">CEO BigBets.AI</p>
                 <div className="flex justify-center gap-5">
                   <img
-                    src="/bigbets/src/assets/images/img_facebook.svg"
+                    src="https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_facebook.svg"
                     alt="Facebook"
                     className="w-4 h-4"
                   />
                   <img
-                    src="/bigbets/src/assets/images/img_linkedin.svg"
+                    src="https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_linkedin.svg"
                     alt="LinkedIn"
                     className="w-4 h-4"
                   />
@@ -481,33 +500,31 @@ const Home: React.FC = () => {
 
           {/* Team Photos */}
           <div className="flex flex-wrap justify-center items-center gap-0 mb-8">
-            <img
-              src={team1}
-              alt="Team member"
-              className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0"
-            />
-            <img
-              src={team2}
-              alt="Team member"
-              className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0"
-            />
-            {/* <img src={team3} alt="Team member" className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0" /> */}
-            <img
-              src={team4}
-              alt="Team member"
-              className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0"
-            />
-            {/* <img src={team5} alt="Team member" className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0" /> */}
-            <img
-              src={team6}
-              alt="Team member"
-              className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0"
-            />
-            <img
-              src={team7}
-              alt="Team member"
-              className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0"
-            />
+                  <img
+                    src={team1}
+                    alt="Team member"
+                    className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0"
+                  />
+                  <img
+                    src={team2}
+                    alt="Team member"
+                    className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0"
+                  />
+                  <img
+                    src={team4}
+                    alt="Team member"
+                    className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0"
+                  />
+                  <img
+                    src={team6}
+                    alt="Team member"
+                    className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0"
+                  />
+                  <img
+                    src={team7}
+                    alt="Team member"
+                    className="w-32 h-32 sm:w-44 sm:h-44 rounded-full object-cover flex-shrink-0"
+                  />
           </div>
 
           {/* Navigation */}
@@ -643,26 +660,16 @@ const Home: React.FC = () => {
                 With lots of unique blocks, you can easily build AI driven projects without coding.
               </p>
               <div className="flex gap-5">
-                <a href="https://www.youtube.com/@BigBets.AI_Official">
-                  <img
-                    src={youtube}
-                    alt="Facebook"
-                    className="w-4 h-4 cursor-pointer hover:opacity-80"
-                  />
+                <a href="https://www.youtube.com/@BigBets.AI_Official" target="_blank" rel="noopener noreferrer" className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.107-2.117C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.391.569A2.994 2.994 0 0 0 .502 6.186C0 8.36 0 12 0 12s0 3.64.502 5.814a2.994 2.994 0 0 0 2.107 2.117C4.772 20.5 12 20.5 12 20.5s7.228 0 9.391-.569a2.994 2.994 0 0 0 2.107-2.117C24 15.64 24 12 24 12s0-3.64-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 </a>
-                <a href="https://www.instagram.com/bigbets.ai_official/">
-                  <img
-                    src="/bigbets/src/assets/images/img_logo_instagram.svg"
-                    alt="Instagram"
-                    className="w-4 h-4 cursor-pointer hover:opacity-80"
-                  />
+                <a href="https://www.instagram.com/bigbets.ai_official/" target="_blank" rel="noopener noreferrer" className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                    <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 2.75a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                  </svg>
                 </a>
-                <a href="">
-                  <img
-                    src="/bigbets/src/assets/images/img_shape_blue_gray_400.svg"
-                    alt="Twitter"
-                    className="w-4 h-4 cursor-pointer hover:opacity-80"
-                  />
+                <a href="https://www.linkedin.com/company/bigbets-ai/" target="_blank" rel="noopener noreferrer" className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.841-1.563 3.039 0 3.6 2.001 3.6 4.601v5.595z"/></svg>
                 </a>
               </div>
             </div>

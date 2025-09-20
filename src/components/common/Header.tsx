@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from '../ui/Button';
 import { HeaderProps } from '../../types/index';
-import logo from '../../assets/logos/logo.png';
+const logo = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/logos/logo.png";
 import { Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions } from '@mui/material';
 import emailjs from 'emailjs-com';
 
