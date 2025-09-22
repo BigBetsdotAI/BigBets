@@ -3,6 +3,8 @@ import Header from '../../components/common/Header';
 import { useRef } from 'react';
 import Button from '../../components/ui/Button';
 import ChipView from '../../components/ui/ChipView';
+import ParallaxSection from '../../components/ui/ParallaxSection';
+import { useParallaxMultiple } from '../../hooks/useParallax';
 import video from '../../assets/videos/bganimation.mp4';
 import logo from '../../assets/logos/companylogo.png';
 import Blog1 from '../../assets/images/blog1.webp';
@@ -126,6 +128,12 @@ const BlogCard3: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
   </div>
 );
 const Home: React.FC = () => {
+  const [heroOffset, decorativeOffset, sectionOffset] = useParallaxMultiple([
+    { speed: 0.3 },
+    { speed: 0.6 },
+    { speed: 0.2 }
+  ]);
+
   const chipItems = [
     { id: 'bi-big-data', label: 'BI and Big Data' },
     { id: 'data-science-ai', label: 'Data Science and AI solutions' },
@@ -255,68 +263,83 @@ const Home: React.FC = () => {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <div className="relative min-h-screen bg-gradient-to-br from-dark via-secondary to-tertiary overflow-hidden">
-        {/* Background Elements */}
-        <div className="relative min-h-screen bg-gradient-to-br from-dark via-secondary to-tertiary overflow-hidden">
-  {/* Background Elements */}
-  <div className="absolute inset-0">
-    <video
-      className="w-full h-full object-cover"
-      autoPlay
-      loop
-      muted
-      playsInline
-    >
-      <source src={video} type="video/mp4" />
-    </video>
-  </div>
+        {/* Background Video with Parallax */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            transform: `translateY(${heroOffset}px)`,
+            willChange: 'transform'
+          }}
+        >
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src={video} type="video/mp4" />
+          </video>
+        </div>
 
-  {/* Decorative Dots */}
-  <div className="absolute left-4 sm:left-8 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 z-10">
-    {[...Array(3)].map((_, i) => (
-      <div key={i} className="w-1 h-1 sm:w-2 sm:h-2 bg-white rounded-full"></div>
-    ))}
-  </div>
+        {/* Decorative Dots with Parallax */}
+        <div 
+          className="absolute left-4 sm:left-8 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 z-10"
+          style={{
+            transform: `translateY(-50%) translateY(${decorativeOffset}px)`,
+            willChange: 'transform'
+          }}
+        >
+          {[...Array(3)].map((_, i) => (
+            <div key={i} className="w-1 h-1 sm:w-2 sm:h-2 bg-white rounded-full"></div>
+          ))}
+        </div>
 
-  {/* Header */}
-      <div ref={headerRef}>
-        <Header className="sticky top-0 z-50 bg-white bg-opacity-90 backdrop-blur-md shadow-sm" />
-      </div>
+        {/* Header */}
+        <div ref={headerRef}>
+          <Header className="sticky top-0 z-50 bg-white bg-opacity-90 backdrop-blur-md shadow-sm" />
+        </div>
 
-  {/* Hero Content */}
-  <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-4 sm:px-6 lg:px-8 text-center">
-    <div className="max-w-4xl mx-auto">
-      {/* Title */}
-      <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-raleway font-bold text-white mb-3 sm:mb-4 leading-tight">
-        GenAI, Agentic AI Implementation At Enterprise Level
-      </h3>
+        {/* Hero Content with Parallax */}
+        <div 
+          className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-4 sm:px-6 lg:px-8 text-center"
+          style={{
+            transform: `translateY(${sectionOffset}px)`,
+            willChange: 'transform'
+          }}
+        >
+          <div className="max-w-4xl mx-auto">
+            {/* Title */}
+            <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-raleway font-bold text-white mb-3 sm:mb-4 leading-tight">
+              GenAI, Agentic AI Implementation At Enterprise Level
+            </h3>
 
-      {/* Sub Title */}
-      <h2 className="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-raleway font-bold bg-gradient-to-r from-primary to-orange bg-clip-text text-transparent mb-6 sm:mb-8 leading-tight">
-        Bespoke AI Solutions For Your Needs
-      </h2>
+            {/* Sub Title */}
+            <h2 className="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-raleway font-bold bg-gradient-to-r from-primary to-orange bg-clip-text text-transparent mb-6 sm:mb-8 leading-tight">
+              Bespoke AI Solutions For Your Needs
+            </h2>
 
-      {/* Paragraph */}
-      <p className="text-base sm:text-lg md:text-xl font-raleway text-white mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-2">
-        At BigBets.AI we harness GenAI and Agentic AI to solve real healthcare challenges.
-        Precision, impact and measurable outcomes — That’s our promise.
-      </p>
+            {/* Paragraph */}
+            <p className="text-base sm:text-lg md:text-xl font-raleway text-white mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-2">
+              At BigBets.AI we harness GenAI and Agentic AI to solve real healthcare challenges.
+              Precision, impact and measurable outcomes — That's our promise.
+            </p>
 
-      {/* Buttons */}
-      <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center">
-        <Button variant="primary" size="medium" className="w-full sm:w-auto">
-          GenAI Demo
-        </Button>
-        <Button variant="primary" size="medium" className="w-full sm:w-auto">
-          Agentic AI Demo
-        </Button>
-      </div>
-    </div>
-  </div>
-</div>
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center">
+              <Button variant="primary" size="medium" className="w-full sm:w-auto">
+                GenAI Demo
+              </Button>
+              <Button variant="primary" size="medium" className="w-full sm:w-auto">
+                Agentic AI Demo
+              </Button>
+            </div>
+          </div>
+        </div>
 
         <br></br>
         {/* Trusted Companies */}
-        <div className="relative z-10 bg-tertiary py-8">
+        <ParallaxSection speed={0.4} className="relative z-10 bg-tertiary py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-xl font-inter text-white uppercase tracking-wider mb-6">
               Trusted by 20+ companies around the globe.
@@ -324,11 +347,11 @@ const Home: React.FC = () => {
             {/* <img src="/bigbets/src/assets/images/img_marquee_div.svg" alt="Company logos" className="w-full h-22 object-contain" /> */}
             <img src={logo} className="w-full h-22 object-contain"></img>
           </div>
-        </div>
+        </ParallaxSection>
       </div>
 
   {/* Services Section */}
-  <div id="services" className="py-16 sm:py-20 lg:py-24 bg-gray-50">
+  <ParallaxSection speed={0.3} id="services" className="py-16 sm:py-20 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-16">
@@ -358,10 +381,10 @@ const Home: React.FC = () => {
             </Button>
           </div>
         </div>
-      </div>
+      </ParallaxSection>
 
       {/* Stats Section */}
-      <div className="py-16 sm:py-20 bg-white">
+      <ParallaxSection speed={0.2} className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             <div className="lg:w-1/3">
@@ -378,10 +401,10 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </ParallaxSection>
 
   {/* Product Section */}
-  <div id="products" className="py-16 sm:py-20 lg:py-24 bg-gray-50">
+  <ParallaxSection speed={0.35} id="products" className="py-16 sm:py-20 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-16">
@@ -397,10 +420,10 @@ const Home: React.FC = () => {
             ))}
           </div>
         </div>
-      </div>
+      </ParallaxSection>
 
   {/* Blog Section */}
-  <div id="research" className="py-16 sm:py-20 lg:py-24 bg-white">
+  <ParallaxSection speed={0.25} id="research" className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-12">
@@ -431,10 +454,10 @@ const Home: React.FC = () => {
             ))}
           </div>
         </div>
-      </div>
+      </ParallaxSection>
 
   {/* Team Section */}
-  <div id="about" className="py-16 sm:py-20 lg:py-24 bg-gray-50">
+  <ParallaxSection speed={0.3} id="about" className="py-16 sm:py-20 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-raleway font-semibold text-dark-custom mb-6">
@@ -516,10 +539,10 @@ const Home: React.FC = () => {
             <img src="/bigbets/src/assets/images/img_right_arrow.svg" alt="Next" className="w-10 h-10 rounded-lg cursor-pointer hover:bg-gray-100" />
           </div> */}
         </div>
-      </div>
+      </ParallaxSection>
 
       {/* AI Expertise Section */}
-      <div className="py-16 sm:py-20 lg:py-24 bg-white">
+      <ParallaxSection speed={0.4} className="py-16 sm:py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             <div className="lg:w-1/2 relative">
@@ -569,10 +592,10 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </ParallaxSection>
 
       {/* Testimonials Section */}
-      <div className="py-16 sm:py-20 lg:py-24 bg-gray-50">
+      <ParallaxSection speed={0.2} className="py-16 sm:py-20 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-raleway font-semibold text-dark-custom mb-6">
@@ -596,7 +619,7 @@ const Home: React.FC = () => {
             <img src="/images/img_right_arrow.svg" alt="Next" className="w-10 h-10 rounded-lg cursor-pointer hover:bg-gray-100" />
           </div> */}
         </div>
-      </div>
+      </ParallaxSection>
 
       {/* CTA Section */}
       {/* <div className="py-16 sm:py-20 lg:py-24 bg-dark relative overflow-hidden">
@@ -629,7 +652,7 @@ const Home: React.FC = () => {
       {/* </div> */}
 
       {/* Footer */}
-      <footer className="bg-tertiary py-16 sm:py-20">
+      <ParallaxSection speed={0.1} className="bg-tertiary py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Company Info */}
@@ -748,7 +771,7 @@ const Home: React.FC = () => {
             <img src="/bigbets/src/assets/images/img_vector_white_a700.svg" alt="Scroll to top" className="w-6 h-6" />
           </div>
         </div> */}
-      </footer>
+      </ParallaxSection>
     </div>
   );
 };
