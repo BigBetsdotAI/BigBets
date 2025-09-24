@@ -167,6 +167,77 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ name, role, avatar, conte
   </TiltCard>
 );
 
+// Custom Testimonial Slider Component
+const TestimonialSlider: React.FC<{ testimonials: TestimonialProps[] }> = ({ testimonials }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const goToPrevious = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    );
+  };
+
+  return (
+    <div className="relative">
+      {/* Navigation Arrows */}
+      <button
+        onClick={goToPrevious}
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors duration-200"
+        aria-label="Previous testimonial"
+      >
+        <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <button
+        onClick={goToNext}
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors duration-200"
+        aria-label="Next testimonial"
+      >
+        <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      {/* Testimonial Container */}
+      <div className="overflow-hidden mx-16">
+        <motion.div
+          className="flex"
+          animate={{ x: -currentIndex * 100 + "%" }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="w-full flex-shrink-0 px-4">
+              <TestimonialCard {...testimonial} />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Dots Indicator */}
+      <div className="flex justify-center mt-8 space-x-2">
+        {testimonials.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+              index === currentIndex ? 'bg-red-500' : 'bg-gray-300'
+            }`}
+            aria-label={`Go to testimonial ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const BlogCard1: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
   <motion.div 
     className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300 ease-out"
@@ -762,31 +833,16 @@ const Home: React.FC = () => {
       </div>
 
       {/* Testimonials Section */}
-  <div className="py-16 sm:py-20 lg:py-8 bg-gray-50">
+      <div className="py-16 sm:py-20 lg:py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-raleway font-semibold text-dark-custom mb-6">
               What our clients say
             </h2>
-            {/* <p className="text-base font-inter text-secondary-custom max-w-3xl mx-auto">
-              Rmet facilisi arcu odio urna aenean erat. Pellentesque in vitae lobortis orci tincidunt facilisis. Pulvinar lacus ultricies turpis urna sapien.
-            </p> */}
           </div>
 
-          {/* Testimonials Carousel */}
-          <div className="mb-12">
-            <MomentumCarousel>
-              {testimonials.map((testimonial, index) => (
-                <TestimonialCard key={index} {...testimonial} />
-              ))}
-            </MomentumCarousel>
-          </div>
-
-          {/* Navigation */}
-          {/* <div className="flex justify-center gap-4">
-            <img src="/images/img_left_arrow_yellow_800.svg" alt="Previous" className="w-10 h-10 rounded-lg cursor-pointer hover:bg-gray-100" />
-            <img src="/images/img_right_arrow.svg" alt="Next" className="w-10 h-10 rounded-lg cursor-pointer hover:bg-gray-100" />
-          </div> */}
+          {/* Testimonials Slider with Navigation */}
+          <TestimonialSlider testimonials={testimonials} />
         </div>
       </div>
 
