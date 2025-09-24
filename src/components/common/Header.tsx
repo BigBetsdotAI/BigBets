@@ -45,7 +45,7 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
   return (
     <header className={`w-full bg-header-overlay shadow-[0px_4px_54px_#888888ff] ${className}`}>
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-2 sm:py-3 md:py-4">
+        <div className="flex justify-between items-center py-2 sm:pyy-3 md:py-4">
           {/* Logo */}
           <div className="flex-shrink-0">
             <h1 className="text-xl sm:text-2xl md:text-3xl font-rubik font-bold text-white">

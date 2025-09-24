@@ -12,7 +12,7 @@ import { FloatingShapes, ParticleSystem, MagneticCursor, MorphingBlob } from '..
 import { StaggeredCard, MorphingCard, TiltCard, AnimatedCounter, MomentumCarousel } from '../../components/ui/AnimatedComponents';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useScrollProgress, useScrollTrigger, useMousePosition } from '../../hooks/useScrollAnimation';
-const video = 'https://ggggg.s3.eu-north-1.amazonaws.com/Hi-Tech+Intro.mp4';
+const conferenceImage = 'https://ggggg.s3.eu-north-1.amazonaws.com/Untitled+design.png';
 const logo = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/logos/companylogo.png";
 const Blog1 = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/blog1.webp";
 const Blog2 = "https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/blog2.jpeg";
@@ -54,33 +54,38 @@ interface BlogCardProps {
   readTime?: string;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, index = 0 }) => (
-  <StaggeredCard 
-    className="bg-white-transparent rounded-[34px] p-6 sm:p-8 shadow-[0px_5px_16px_#51a9e11e] transition-all duration-300"
-    index={index}
-  >
-    <MagneticCursor strength={0.2}>
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 mb-4">
-        <motion.img 
-          src={icon} 
-          alt="" 
-          className="w-9 h-9 sm:w-12 sm:h-12 flex-shrink-0" 
-          whileHover={{ rotate: 360, scale: 1.1 }}
-          transition={{ duration: 0.6 }}
-        />
-        <RevealText className="text-base sm:text-lg font-inter font-medium text-dark-custom text-center sm:text-left">
-          {title}
-        </RevealText>
+const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) => {
+  // Card animates up on hover and returns to original position on mouse leave
+  return (
+    <motion.div
+      className="bg-white-transparent rounded-[34px] p-6 sm:p-8 shadow-[0px_5px_16px_#51a9e11e] group"
+      whileHover={{ y: -18, boxShadow: "0px 12px 32px #51a9e133" }}
+      transition={{ type: "spring", stiffness: 300, damping: 22 }}
+      style={{ borderRadius: '34px' }}
+    >
+      <div style={{ borderRadius: '34px' }}>
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 mb-4">
+          <motion.img
+            src={icon}
+            alt=""
+            className="w-9 h-9 sm:w-12 sm:h-12 flex-shrink-0"
+            whileHover={{ rotate: 360 }}
+            transition={{ type: "spring", stiffness: 200, damping: 15, duration: 1.5 }}
+            style={{ willChange: 'transform' }}
+          />
+          <div className="text-base sm:text-lg font-inter font-medium text-dark-custom text-center sm:text-left">
+            {title}
+          </div>
+        </div>
+        <div
+          className="text-sm font-inter text-secondary-custom leading-6 text-center sm:text-left"
+        >
+          {description}
+        </div>
       </div>
-      <RevealText 
-        className="text-sm font-inter text-secondary-custom leading-6 text-center sm:text-left"
-        delay={0.2}
-      >
-        {description}
-      </RevealText>
-    </MagneticCursor>
-  </StaggeredCard>
-);
+    </motion.div>
+  );
+};
 
 const StatItem: React.FC<StatItemProps> = ({ value, label, color }) => (
   <div className="flex flex-col items-center gap-2">
@@ -108,12 +113,12 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ name, role, avatar, conte
           transition={{ duration: 0.3 }}
         />
         <div className="flex-1">
-          <RevealText className="font-inter font-medium text-dark-custom">
+          <div className="font-inter font-medium text-dark-custom">
             {name}
-          </RevealText>
-          <RevealText className="text-xs text-custom-gray" delay={0.1}>
+          </div>
+          <div className="text-xs text-custom-gray">
             {role}
-          </RevealText>
+          </div>
         </div>
         <motion.img 
           src="https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_comma.svg" 
@@ -140,9 +145,9 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ name, role, avatar, conte
           </motion.svg>
         ))}
       </div>
-      <RevealText className="text-sm font-inter text-secondary-custom leading-6 flex-1" delay={0.3}>
+      <p className="text-sm font-inter text-secondary-custom leading-6 flex-1">
         {content}
-      </RevealText>
+      </p>
     </MorphingCard>
     <motion.div 
       className="absolute -bottom-6 left-4 w-[84px] h-[118px] bg-violet rounded-[58px] shadow-[0px_4px_150px_#888888ff]"
@@ -163,8 +168,15 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ name, role, avatar, conte
 );
 
 const BlogCard1: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
-  <StaggeredCard className="bg-white border border-gray-200 rounded-xl p-6 transition-all duration-300">
-    <MagneticCursor>
+  <motion.div 
+    className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300 ease-out"
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.6, ease: "easeOut" }}
+    whileHover={{ y: -8, scale: 1.02 }}
+  >
+    <div>
       <motion.img 
         src={Blog1} 
         alt={title} 
@@ -172,79 +184,75 @@ const BlogCard1: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
         whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.3 }}
       />
-      <RevealText className="text-lg font-inter font-semibold text-dark-custom mb-3 leading-tight">
+      <h3 className="text-lg font-inter font-semibold text-dark-custom mb-3 leading-tight">
         {title}
-      </RevealText>
-      <RevealText className="text-sm font-inter font-medium text-secondary-custom leading-7 mb-6" delay={0.2}>
+      </h3>
+      <p className="text-sm font-inter font-medium text-secondary-custom leading-7 mb-6">
         {excerpt}
-      </RevealText>
+      </p>
       <div className="flex items-center gap-2">
-        <motion.a 
-          className="text-sm font-inter font-medium text-dark-custom"
-          whileHover={{ x: 5 }}
-          transition={{ duration: 0.2 }}
-        >
-          Click Me
-        </motion.a>
+        <a className="text-sm font-inter font-medium text-dark-custom hover:text-red-custom transition-colors duration-200 cursor-pointer">Click Me</a>
       </div>
-    </MagneticCursor>
-  </StaggeredCard>
+    </div>
+  </motion.div>
 );
 const BlogCard2: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
-  <StaggeredCard className="bg-white border border-gray-200 rounded-xl p-6 transition-all duration-300" index={1}>
-    <MagneticCursor>
+  <motion.div 
+    className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300 ease-out"
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+    whileHover={{ y: -8, scale: 1.02 }}
+  >
+    <div>
       <motion.img 
         src={Blog2} 
         alt={title} 
         className="w-full h-48 sm:h-56 object-cover rounded-xl mb-4" 
-        whileHover={{ scale: 1.05, rotateY: 5 }}
+        whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.3 }}
       />
-      <RevealText className="text-lg font-inter font-semibold text-dark-custom mb-3 leading-tight">
+      <h3 className="text-lg font-inter font-semibold text-dark-custom mb-3 leading-tight">
         {title}
-      </RevealText>
-      <RevealText className="text-sm font-inter font-medium text-secondary-custom leading-7 mb-6" delay={0.2}>
+      </h3>
+      <p className="text-sm font-inter font-medium text-secondary-custom leading-7 mb-6">
         {excerpt}
-      </RevealText>
+      </p>
       <div className="flex items-center gap-2">
-        <motion.a 
-          className="text-sm font-inter font-medium text-dark-custom"
-          whileHover={{ x: 5 }}
-          transition={{ duration: 0.2 }}
-        >
-          Click Me
-        </motion.a>
+        <a className="text-sm font-inter font-medium text-dark-custom hover:text-red-custom transition-colors duration-200 cursor-pointer">Click Me</a>
       </div>
-    </MagneticCursor>
-  </StaggeredCard>
+    </div>
+  </motion.div>
 );
 const BlogCard3: React.FC<BlogCardProps> = ({ image, title, excerpt }) => (
-  <StaggeredCard className="bg-white border border-gray-200 rounded-xl p-6 transition-all duration-300" index={2}>
-    <MagneticCursor>
+  <motion.div 
+    className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300 ease-out"
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+    whileHover={{ y: -8, scale: 1.02 }}
+  >
+    <div>
       <motion.img 
         src={Blog3} 
         alt={title} 
         className="w-full h-48 sm:h-56 object-cover rounded-xl mb-4" 
-        whileHover={{ scale: 1.05, rotateX: 5 }}
+        whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.3 }}
       />
-      <RevealText className="text-lg font-inter font-semibold text-dark-custom mb-3 leading-tight">
+      <h3 className="text-lg font-inter font-semibold text-dark-custom mb-3 leading-tight">
         {title}
-      </RevealText>
-      <RevealText className="text-sm font-inter font-medium text-secondary-custom leading-7 mb-6" delay={0.2}>
+      </h3>
+      <p className="text-sm font-inter font-medium text-secondary-custom leading-7 mb-6">
         {excerpt}
-      </RevealText>
+      </p>
       <div className="flex items-center gap-2">
-        <motion.a 
-          className="text-sm font-inter font-medium text-dark-custom"
-          whileHover={{ x: 5 }}
-          transition={{ duration: 0.2 }}
-        >
-          Click Me
-        </motion.a>
+        <a className="text-sm font-inter font-medium text-dark-custom hover:text-red-custom transition-colors duration-200 cursor-pointer">Click Me</a>
       </div>
-    </MagneticCursor>
-  </StaggeredCard>
+    </div>
+  </motion.div>
 );
 const Home: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -400,14 +408,6 @@ const Home: React.FC = () => {
   };
   return (
     <div ref={containerRef} className="min-h-screen bg-white">
-      {/* Floating Elements */}
-      <FloatingShapes count={12} />
-      <ParticleSystem count={80} />
-      
-      {/* Multiple Morphing Blobs for background */}
-      <MorphingBlob className="fixed top-20 left-20 w-96 h-96 z-0" />
-      <MorphingBlob className="fixed bottom-20 right-20 w-80 h-80 z-0" />
-      <MorphingBlob className="fixed top-1/2 left-1/3 w-64 h-64 z-0" />
       
       {/* Hero Section with Enhanced Animations */}
       <motion.div 
@@ -421,15 +421,12 @@ const Home: React.FC = () => {
             className="absolute inset-0"
             style={{ y: parallaxY1 }}
           >
-            <video
+            <img
+              src={conferenceImage}
+              alt="Conference Background"
               className="w-full h-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-            >
-              <source src={video} type="video/mp4" />
-            </video>
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-50"></div>
           </motion.div>
 
 
@@ -473,13 +470,25 @@ const Home: React.FC = () => {
 
       <br></br>
         {/* Trusted Companies */}
-        <div className="relative z-10 bg-tertiary py-8">
+        <div className="relative z-10 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-xl font-inter text-white uppercase tracking-wider mb-6">
+            <p className="text-xl font-inter text-white uppercase tracking-wider mb-8">
               Trusted by 20+ companies around the globe.
             </p>
-            {/* <img src="/bigbets/src/assets/images/img_marquee_div.svg" alt="Company logos" className="w-full h-22 object-contain" /> */}
-            <img src={logo} className="w-full h-22 object-contain"></img>
+            
+            {/* Individual Company Logos */}
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-80 hover:opacity-100 transition-opacity duration-300">
+              <img src="https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/TCS.png" alt="TCS" className="h-10 md:he-12 w-auto object-contain grayscale hover:grayscale-0 hover:scale-110 transition-all duration-300 cursor-pointer" />
+              <img src="https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/wipro.png" alt="Wipro" className="h-10 md:he-12 w-auto object-contain grayscale hover:grayscale-0 hover:scale-110 transition-all duration-300 cursor-pointer" />
+              <img src="https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/Infosys.png" alt="Infosys" className="h-10 md:he-12 w-auto object-contain grayscale hover:grayscale-0 hover:scale-110 transition-all duration-300 cursor-pointer" />
+              <img src="https://ggggg.s3.eu-north-1.amazonaws.com/hcl-removebg-preview.png" alt="HCL" className="h-12 md:h-14 max-w-[120px] md:max-w-[140px] object-contain grayscale hover:grayscale-0 hover:scale-110 transition-all duration-300 cursor-pointer" />
+              
+              {/* Additional Company Logos with larger sizes */}
+              <img src="https://ggggg.s3.eu-north-1.amazonaws.com/Cognizant.png" alt="Cognizant" className="h-12 md:h-14 max-w-[120px] md:max-w-[140px] object-contain grayscale hover:grayscale-0 hover:scale-110 transition-all duration-300 cursor-pointer" />
+              <img src="https://ggggg.s3.eu-north-1.amazonaws.com/Genpact-Logo.wine-removebg-preview.png" alt="Genpact" className="h-12 md:h-14 max-w-[120px] md:max-w-[140px] object-contain grayscale hover:grayscale-0 hover:scale-110 transition-all duration-300 cursor-pointer" />
+              <img src="https://ggggg.s3.eu-north-1.amazonaws.com/Accenture-Symbol-removebg-preview.png" alt="Accenture" className="h-12 md:h-14 max-w-[120px] md:max-w-[140px] object-contain grayscale hover:grayscale-0 hover:scale-110 transition-all duration-300 cursor-pointer" />
+              <img src="https://ggggg.s3.eu-north-1.amazonaws.com/Tech_Mahindra-Logo.wine-removebg-preview.png" alt="Tech Mahindra" className="h-12 md:h-14 max-w-[120px] md:max-w-[140px] object-contain grayscale hover:grayscale-0 hover:scale-110 transition-all duration-300 cursor-pointer" />
+            </div>
           </div>
         </div>
 
@@ -505,14 +514,14 @@ const Home: React.FC = () => {
           </div>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12 items-start">
             {services.map((service, index) => (
               <ServiceCard key={index} {...service} index={index} />
             ))}
           </div>
 
           {/* CTA Button */}
-          <div className="text-center">
+          <div className="text-center mt-10">
             <Button variant="primary" size="medium">
               I Need Free Consultation
             </Button>
@@ -525,11 +534,9 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             <div className="lg:w-1/3">
-              <TypewriterText 
-                text="Why Work With Us?"
-                className="text-3xl sm:text-4xl font-inter font-semibold text-dark-custom leading-tight"
-                delay={200}
-              />
+              <div className="text-3xl sm:text-4xl font-inter font-semibold text-black leading-tight">
+                Why Work With Us?
+              </div>
             </div>
             <div className="lg:w-2/3 flex flex-col sm:flex-row justify-around items-center gap-8 sm:gap-4">
               <div className="flex flex-col items-center gap-2">
@@ -588,7 +595,7 @@ const Home: React.FC = () => {
       </div>
 
   {/* Blog Section */}
-  <div id="research" className="py-16 sm:py-20 lg:py-24 bg-white">
+  <div id="research" className="py-16 sm:py-20 lg:py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-12">
@@ -598,17 +605,8 @@ const Home: React.FC = () => {
             />
           </div>
 
-          {/* Filter Chips */}
-          {/* <div className="flex flex-col sm:flex-row justify-between items-center gap-6 mb-12">
-            <ChipView items={chipItems} className="flex-1" />
-            <div className="flex items-center gap-4">
-              <img src="/bigbets/src/assets/images/img_left_arrow.svg" alt="Previous" className="w-10 h-10 rounded-lg cursor-pointer hover:bg-gray-100" />
-              <img src="/bigbets/src/assets/images/img_right_arrow.svg" alt="Next" className="w-10 h-10 rounded-lg cursor-pointer hover:bg-gray-100" />
-            </div>
-          </div> */}
-
-          {/* Blog Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Blog Grid with extra margin above */}
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post, index) => (
               <BlogCard1 key={index} {...post} />
             ))}
@@ -627,7 +625,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <SplitText 
-              text="Meet our team"
+              text={"Meet\u00A0our\u00A0team"}
               className="text-3xl sm:text-4xl md:text-5xl font-raleway font-semibold text-dark-custom mb-6"
               staggerDelay={0.1}
             />
@@ -641,7 +639,7 @@ const Home: React.FC = () => {
           </div>
 
           {/* Team Member Showcase */}
-          <div className="relative mb-12">
+          <div className="relative mb-20">
             <div className="bg-white rounded-2xl shadow-[1px_-2px_9px_#00000026] p-8 max-w-4xl mx-auto">
               <p className="text-base font-raleway text-secondary-custom text-center mb-8 leading-relaxed">
                 During a train ride, a moment of inspiration struck Vasily. He wished for a
@@ -764,14 +762,12 @@ const Home: React.FC = () => {
       </div>
 
       {/* Testimonials Section */}
-      <div className="py-16 sm:py-20 lg:py-24 bg-gray-50">
+  <div className="py-16 sm:py-20 lg:py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <TypewriterText 
-              text="What our clients say"
-              className="text-3xl sm:text-4xl md:text-5xl font-raleway font-semibold text-dark-custom mb-6"
-              delay={100}
-            />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-raleway font-semibold text-dark-custom mb-6">
+              What our clients say
+            </h2>
             {/* <p className="text-base font-inter text-secondary-custom max-w-3xl mx-auto">
               Rmet facilisi arcu odio urna aenean erat. Pellentesque in vitae lobortis orci tincidunt facilisis. Pulvinar lacus ultricies turpis urna sapien.
             </p> */}
@@ -855,7 +851,7 @@ const Home: React.FC = () => {
 
             {/* Company Links */}
             <div>
-              <h4 className="text-sm font-inter text-white-transparent mb-4">Company</h4>
+              <h4 className="text-sm font-inter text-white-transparent mbb-4">Company</h4>
               <div className="space-y-3">
                     <a
                       href="#about"
@@ -887,7 +883,7 @@ const Home: React.FC = () => {
 
             {/* Product Links */}
             <div>
-              <h4 className="text-sm font-inter text-white-transparent mb-4">Product</h4>
+              <h4 className="text-sm font-inter text-white-transparent mbb-4">Product</h4>
               <div className="space-y-3">
                 {['RAG Platform', 'Intelligence Document Processing', 'Agentic AI Platforms'].map(
                   (link) => (
@@ -905,7 +901,7 @@ const Home: React.FC = () => {
 
             {/* Services Links */}
             <div>
-              <h4 className="text-sm font-inter text-white-transparent mb-4">Services</h4>
+              <h4 className="text-sm font-inter text-white-transparent mbb-4">Services</h4>
               <div className="space-y-3">
                 {[
                   'AI Consulting',
