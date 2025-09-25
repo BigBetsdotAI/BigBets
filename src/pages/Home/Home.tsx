@@ -102,74 +102,49 @@ const StatItem: React.FC<StatItemProps> = ({ value, label, color }) => (
 );
 
 const TestimonialCard: React.FC<TestimonialProps> = ({ name, role, avatar, content, rating }) => (
-  <TiltCard className="relative w-full max-w-sm mx-auto min-h-[340px] flex flex-col">
-    <MorphingCard className="bg-white rounded-xl shadow-[0px_1px_7px_#0000003f] p-8 relative z-10 flex flex-col min-h-[340px]">
-      <div className="flex items-center gap-3 mb-4">
-        <motion.img 
-          src={avatar} 
-          alt={name} 
-          className="w-10 h-10 rounded-lg" 
-          whileHover={{ scale: 1.1, rotate: 5 }}
-          transition={{ duration: 0.3 }}
-        />
-        <div className="flex-1">
-          <div className="font-inter font-medium text-dark-custom">
-            {name}
-          </div>
-          <div className="text-xs text-custom-gray">
-            {role}
-          </div>
+  <div className="max-w-4xl mx-auto text-center">
+    {/* Star Rating */}
+    <div className="flex items-center justify-center mb-6">
+      {[...Array(5)].map((_, i) => (
+        <svg
+          key={i}
+          className={`w-6 h-6 ${i < rating ? 'text-yellow-400' : 'text-gray-300'} mx-1`}
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z" />
+        </svg>
+      ))}
+    </div>
+
+    {/* Testimonial Content */}
+    <blockquote className="text-xl md:text-2xl font-inter text-gray-700 leading-relaxed italic mb-8">
+      "{content}"
+    </blockquote>
+
+    {/* User Info Below Paragraph */}
+    <div className="flex items-center justify-center gap-4">
+      <img 
+        src={avatar} 
+        alt={name} 
+        className="w-16 h-16 rounded-full object-cover" 
+      />
+      <div className="text-left">
+        <div className="font-inter font-semibold text-gray-900 text-lg">
+          {name}
         </div>
-        <motion.img 
-          src="https://bitbet33.s3.ap-northeast-1.amazonaws.com/assets/images/img_comma.svg" 
-          alt="Quote" 
-          className="w-10 h-10 opacity-20" 
-          animate={{ rotate: [0, 10, -10, 0] }}
-          transition={{ duration: 4, repeat: Infinity }}
-        />
+        <div className="text-sm text-gray-600">
+          {role}
+        </div>
       </div>
-      {/* Star Rating */}
-      <div className="flex items-center mb-2">
-        {[...Array(5)].map((_, i) => (
-          <motion.svg
-            key={i}
-            className={`w-5 h-5 ${i < rating ? 'text-yellow-400' : 'text-gray-300'}`}
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            initial={{ scale: 0, rotate: 180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ delay: i * 0.1, duration: 0.5 }}
-            whileHover={{ scale: 1.2 }}
-          >
-            <path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z" />
-          </motion.svg>
-        ))}
-      </div>
-      <p className="text-sm font-inter text-secondary-custom leading-6 flex-1">
-        {content}
-      </p>
-    </MorphingCard>
-    <motion.div 
-      className="absolute -bottom-6 left-4 w-[84px] h-[118px] bg-violet rounded-[58px] shadow-[0px_4px_150px_#888888ff]"
-      animate={{ y: [0, -10, 0] }}
-      transition={{ duration: 3, repeat: Infinity }}
-    />
-    <motion.div 
-      className="absolute -bottom-6 right-8 w-[84px] h-[118px] bg-light-blue rounded-[58px] shadow-[0px_4px_150px_#888888ff]"
-      animate={{ y: [0, 10, 0] }}
-      transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-    />
-    <motion.div 
-      className="absolute -bottom-6 right-0 w-[84px] h-[118px] bg-light-green rounded-[58px] shadow-[0px_4px_150px_#888888ff]"
-      animate={{ y: [0, -5, 0] }}
-      transition={{ duration: 3, repeat: Infinity, delay: 2 }}
-    />
-  </TiltCard>
+    </div>
+  </div>
 );
 
 // Custom Testimonial Slider Component
 const TestimonialSlider: React.FC<{ testimonials: TestimonialProps[] }> = ({ testimonials }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) => 
@@ -183,8 +158,23 @@ const TestimonialSlider: React.FC<{ testimonials: TestimonialProps[] }> = ({ tes
     );
   };
 
+  // Auto-swipe every 2 seconds (pause on hover)
+  useEffect(() => {
+    if (!isPaused) {
+      const autoSlide = setInterval(() => {
+        goToNext();
+      }, 2000); // 2 seconds
+
+      return () => clearInterval(autoSlide);
+    }
+  }, [currentIndex, isPaused]);
+
   return (
-    <div className="relative">
+    <div 
+      className="relative"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       {/* Navigation Arrows */}
       <button
         onClick={goToPrevious}
