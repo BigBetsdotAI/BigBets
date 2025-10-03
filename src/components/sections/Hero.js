@@ -1,25 +1,16 @@
 import React from 'react';
+import purpleAbstractBg from '../../assets/images/purple-abstract-hero-bg.png';
 
 const Hero = () => {
   return (
     <section id="home" className="hero">
       <div className="hero-background">
-        <div className="wave-pattern">
-          <svg className="wave-svg" viewBox="0 0 1200 800" preserveAspectRatio="none">
-            <path d="M0,400 C300,200 900,600 1200,400 L1200,800 L0,800 Z" fill="url(#waveGradient)" opacity="0.3"/>
-            <path d="M0,500 C400,300 800,700 1200,500 L1200,800 L0,800 Z" fill="url(#waveGradient2)" opacity="0.2"/>
-            <defs>
-              <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#8B5CF6" />
-                <stop offset="100%" stopColor="#3B82F6" />
-              </linearGradient>
-              <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#EC4899" />
-                <stop offset="100%" stopColor="#8B5CF6" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
+        <img 
+          src={purpleAbstractBg} 
+          alt="Hero Background" 
+          className="hero-bg-image"
+        />
+        <div className="hero-overlay"></div>
       </div>
       
       <div className="container">
@@ -64,6 +55,10 @@ const Hero = () => {
               </div>
             </div>
           </div>
+        </div>
+        
+        <div className="hero-trust-statement">
+          <p className="trust-text">TRUSTED BY COMPANIES IN 100+ COUNTRIES AROUND THE GLOBE.</p>
         </div>
       </div>
     </section>

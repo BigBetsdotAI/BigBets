@@ -9,3 +9,4 @@ export { default as Testimonials } from './Testimonials';
 export { default as CompanyLogos } from './CompanyLogos';
 export { default as Contact } from './Contact';
 export { default as Resources } from './Resources';
+export { default as WhyWorkWithUs } from './WhyWorkWithUs';
