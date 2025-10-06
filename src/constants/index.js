@@ -151,7 +151,7 @@ export const NAV_ITEMS = [
   { label: 'Services', href: '/services', id: 'services' },
   { label: 'Products', href: '/products', id: 'products' },
   { label: 'Resources', href: '/resources', id: 'resources' },
-  { label: 'Contact', href: '/contact', id: 'contact' }
+  { label: 'Testimonials', href: '/testimonials', id: 'testimonials' }
 ];
 
 /* Company Information */

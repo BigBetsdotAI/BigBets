@@ -37,6 +37,7 @@
   height: 60px;
   min-width: 120px;
   padding: 0 1rem;
+  overflow: hidden;
 }
 
 .logo-item:hover {
@@ -55,11 +56,18 @@
   max-width: 120px;
   filter: brightness(0) invert(1) opacity(0.7);
   transition: all 0.3s ease;
+  object-fit: contain;
 }
 
 .logo-item:hover .company-logo {
   filter: brightness(0) invert(1) opacity(1);
   transform: scale(1.05);
+}
+
+/* Specific adjustment for eBay logo */
+.company-logo[alt="eBay Logo"] {
+  height: 28px;
+  max-width: 90px;
 }
 
 @media (max-width: 1024px) {
@@ -71,25 +79,72 @@
 
 @media (max-width: 768px) {
   .logos-grid {
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem 1rem;
     padding: 0 1rem;
+    justify-items: center;
+    align-items: center;
+  }
+  
+  .logo-item {
+    height: 40px;
+    min-width: 70px;
+    overflow: hidden;
   }
   
   .company-logo {
-    height: 32px;
-    max-width: 100px;
+    height: 22px;
+    max-width: 60px;
+    object-fit: contain;
+  }
+  
+  .logo-text {
+    font-size: 0.85rem;
+  }
+  
+  /* eBay logo specific adjustment for tablet */
+  .company-logo[alt="eBay Logo"] {
+    height: 16px;
+    max-width: 45px;
   }
 }
 
 @media (max-width: 480px) {
   .logos-grid {
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem 1rem;
+    padding: 0 1.5rem;
+    justify-items: center;
+    align-items: center;
+    max-width: 100%;
+  }
+  
+  .logo-item {
+    height: 50px;
+    min-width: 80px;
     padding: 0 0.5rem;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .company-logo {
-    height: 28px;
-    max-width: 80px;
+    height: 22px;
+    max-width: 70px;
+    object-fit: contain;
+  }
+  
+  .logo-text {
+    font-size: 0.8rem;
+  }
+  
+  /* eBay logo specific adjustment for mobile */
+  .company-logo[alt="eBay Logo"] {
+    height: 16px;
+    max-width: 50px;
   }
 }
 
@@ -549,7 +604,7 @@ stats {
 
 /* Journey Section */
 .journey-section {
-  padding: 4rem 0;
+  padding: 2rem 0;
   background: #0f0f1a;
   position: relative;
   overflow: hidden;
@@ -752,22 +807,61 @@ stats {
 }
 
 @media (max-width: 768px) {
+  .journey-section {
+    padding: 1.5rem 1rem;
+  }
+  
+  .journey-content {
+    min-height: 323px;
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+  }
+  
+  .journey-text {
+    padding: 0 0.75rem;
+    max-width: 100%;
+  }
+  
   .journey-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.3;
+  }
+  
+  .journey-form {
+    margin-bottom: 1rem;
   }
   
   .input-group {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.75rem;
     border-radius: 20px;
+    padding: 0.875rem;
+    width: 100%;
+    max-width: 100%;
   }
   
   .journey-input {
-    min-width: 200px;
+    min-width: 100%;
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: 0.95rem;
   }
   
   .journey-button {
     width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .journey-logo {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .journey-logo svg {
+    width: 50px;
+    height: 50px;
   }
 }
 
@@ -1074,19 +1168,23 @@ stats {
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .testimonial-card {
   position: relative;
-  background: #111827;
+  background: #15141D;
   border-radius: 16px;
   padding: 24px;
   max-width: 350px;
-  overflow: hidden;
+  overflow: visible;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   margin: 0 auto;
+  z-index: 2;
 }
+
+/* Gradient backgrounds removed */
 
 .testimonial-card:hover {
   transform: translateY(-5px);
@@ -1546,6 +1644,32 @@ stats {
     gap: 2rem;
   }
   
+  .contact {
+    padding: 2rem 1rem;
+  }
+  
+  .contact-content {
+    padding: 0 1rem;
+    text-align: center;
+  }
+  
+  .contact-info {
+    text-align: center;
+  }
+  
+  .contact-form {
+    padding: 1.5rem;
+    text-align: left;
+  }
+  
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+  
+  .form-group label {
+    text-align: left;
+  }
+  
   .services-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -1554,6 +1678,46 @@ stats {
   .features-grid,
   .resources-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .articles-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .article-card {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .article-image {
+    height: 180px;
+    margin: 0.75rem;
+    width: calc(100% - 1.5rem);
+  }
+  
+  .article-content {
+    padding: 1rem;
+  }
+  
+  .article-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .article-description {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+  
+  .resource-card {
+    padding: 1.5rem;
+  }
+  
+  .resource-title {
+    font-size: 1.1rem;
   }
   
   .logos-grid {
@@ -1750,22 +1914,47 @@ stats {
 /* Footer Responsive */
 @media (max-width: 768px) {
   .footer {
-    padding: 2rem 0 1.5rem;
+    padding: 2rem 1rem 1.5rem;
   }
   
   .footer-content {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+  
+  .footer-brand {
     gap: 2rem;
+    align-items: center;
+  }
+  
+  .footer-logo-container {
     text-align: center;
   }
   
   .footer-links {
     grid-template-columns: 1fr;
     gap: 2rem;
+    justify-items: center;
+  }
+  
+  .footer-section {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .footer-list {
+    align-items: center;
+  }
+  
+  .footer-link:hover {
+    transform: none;
   }
   
   .footer-social {
     justify-content: center;
+    margin-left: 0;
   }
 }
 
@@ -1848,16 +2037,28 @@ stats {
 /* Why Work With Us Responsive */
 @media (max-width: 768px) {
   .why-work-section {
-    padding: 1.5rem 0;
+    padding: 2rem 1rem;
+    overflow: visible;
   }
   
   .why-work-section .container {
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    max-width: 100%;
+    overflow: visible;
   }
   
   .why-work-stats {
-    gap: 1rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .stat-item {
+    padding: 0.5rem 0.75rem;
+    white-space: normal;
   }
   
   .stat-item:not(:last-child)::after {
@@ -1865,16 +2066,19 @@ stats {
   }
   
   .why-work-title {
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     margin: 0;
+    text-align: center;
+    white-space: normal;
   }
   
   .stat-number {
-    font-size: 1.25rem;
+    font-size: 2rem;
   }
   
   .stat-text {
-    font-size: 0.7rem;
+    font-size: 0.875rem;
+    line-height: 1.3;
   }
 }
 

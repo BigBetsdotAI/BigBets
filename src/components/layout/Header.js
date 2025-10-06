@@ -20,9 +20,9 @@ const Header = () => {
             <li><Link to="/about" className={`nav-link ${isActive('/about') ? 'active' : ''}`}>About</Link></li>
             <li><Link to="/services" className={`nav-link ${isActive('/services') ? 'active' : ''}`}>Services</Link></li>
             <li><Link to="/products" className={`nav-link ${isActive('/products') ? 'active' : ''}`}>Products</Link></li>
-            <li><Link to="/contact" className={`nav-link ${isActive('/contact') ? 'active' : ''}`}>Contact</Link></li>
+            <li><Link to="/testimonials" className={`nav-link ${isActive('/testimonials') ? 'active' : ''}`}>Testimonials</Link></li>
           </ul>
-          <Link to="/contact" className="btn btn-primary contact-btn">Contact US</Link>
+          <Link to="/contact" className="btn btn-primary contact-btn">contacts</Link>
         </nav>
         
         <button 

@@ -39,10 +39,17 @@
 }
 
 .hero-text-section {
-    text-align: left;
+    text-align: center;
     margin-left: 2rem;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* Desktop text alignment */
+@media (min-width: 641px) {
+  .hero-text-section {
+    text-align: left;
+  }
 }
 
 .hero-heading {
@@ -161,43 +168,107 @@
 /* Mobile responsive adjustments */
 @media (max-width: 640px) {
   .hero-tailwind {
-    background-size: 80%;
-    background-position: right bottom;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 6rem 1rem 3rem 1rem;
+    position: relative;
+    margin-top: 0;
+    margin-right: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-tailwind::before {
+    background: linear-gradient(to bottom, rgba(13, 13, 38, 0.7) 0%, rgba(13, 13, 38, 0.5) 50%, rgba(13, 13, 38, 0.7) 100%);
   }
   
   .hero-container {
-    padding: 2rem 1rem 0 0;
+    padding: 0 1rem;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-text-section {
+    margin-left: 0;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 100%;
+    text-align: center;
   }
   
   .hero-heading {
     font-size: 1.75rem;
-    margin-top: 1rem;
+    margin-top: 0;
     margin-bottom: 1rem;
     max-width: 100%;
+    text-align: center;
+  }
+  
+  .hero-heading-white,
+  .hero-heading-gradient {
+    font-size: 1.75rem;
+    display: block;
+    white-space: normal;
+  }
+  
+  .hero-heading-white br {
+    display: none;
   }
   
   .hero-paragraph {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
     margin-bottom: 1.5rem;
     max-width: 100%;
+    text-align: center;
   }
   
   .hero-buttons {
     flex-direction: column;
     gap: 0.75rem;
+    margin-left: 0;
+    align-items: center;
+    width: 100%;
+    padding: 0 1rem;
   }
   
   .hero-btn {
-    padding: 0.625rem 1.25rem;
-    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    min-width: 160px;
+    max-width: 200px;
+    width: 100%;
+    overflow: visible;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .hero-btn:active,
+  .hero-btn:focus {
+    transform: scale(0.98);
+    outline: none;
   }
   
   .hero-trust {
     margin-top: 2rem;
+    margin-left: 0;
   }
   
   .hero-trust-text {
     font-size: 0.75rem;
+    margin-left: 0;
+    text-align: center;
   }
 }
 
