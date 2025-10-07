@@ -833,3 +833,17 @@
 .notifications {
   margin-top: 1.5rem;
 }
+
+/* Center content utility */
+.center-content {
+  min-height: 90vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 5px; /* Increased from 80px */
+}
+
+/* If you want to target the modal specifically: */
+.modal-content {
+  margin-top: 5px; /* Increased from 80px */
+}

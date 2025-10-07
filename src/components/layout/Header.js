@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ContactModal } from '../ui';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
@@ -47,8 +49,18 @@ const Header = () => {
             <li><a href="#products" className="nav-link">Products</a></li>
             <li><a href="#testimonials" className="nav-link">Testimonials</a></li>
           </ul>
-          <a href="#contact" className="btn btn-primary contact-btn">contacts</a>
+          <button 
+            onClick={() => setIsContactModalOpen(true)} 
+            className="btn btn-primary contact-btn"
+          >
+            Contact US
+          </button>
         </nav>
+
+        <ContactModal 
+          isOpen={isContactModalOpen} 
+          onClose={() => setIsContactModalOpen(false)} 
+        />
         
         <button 
           className="menu-toggle"
