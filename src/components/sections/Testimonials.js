@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Testimonials = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [rotation, setRotation] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   
   const testimonials = [
     {
@@ -30,13 +32,68 @@ const Testimonials = () => {
     }
   ];
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % testimonials.length);
+  // Auto-rotate cards every 2 seconds
+  useEffect(() => {
+    if (isPaused) return; // Don't rotate if paused
+
+    const interval = setInterval(() => {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setRotation((prev) => (prev + 1) % testimonials.length);
+      }, 800); // Wait for animation to complete
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 850);
+    }, 3000); // Rotate every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [testimonials.length, isPaused]);
+
+  // Manual navigation functions
+  const handleNext = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setTimeout(() => {
+      setRotation((prev) => (prev + 1) % testimonials.length);
+    }, 800);
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 850);
   };
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const handlePrev = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setTimeout(() => {
+      setRotation((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    }, 800);
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 850);
   };
+
+  // Pause/resume on hover
+  const handleMouseEnter = () => {
+    setIsPaused(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsPaused(false);
+  };
+
+  // Get rotated testimonials array
+  const getRotatedTestimonials = () => {
+    const rotated = [...testimonials];
+    for (let i = 0; i < rotation; i++) {
+      rotated.push(rotated.shift());
+    }
+    return rotated;
+  };
+
+  const rotatedTestimonials = getRotatedTestimonials();
+
+  // Duplicate testimonials for seamless infinite loop
+  const displayTestimonials = [...rotatedTestimonials, ...rotatedTestimonials];
 
   return (
     <section id="testimonials" className="testimonials">
@@ -49,12 +106,17 @@ const Testimonials = () => {
         </div>
         
         <div className="testimonials-container">
-          <div className="testimonials-grid">
-            {testimonials.map((testimonial, index) => (
+          <div className={`testimonials-grid ${isAnimating ? 'animating' : ''}`}>
+            {displayTestimonials.map((testimonial, index) => (
               <div
-                key={testimonial.id}
-                className={`testimonial-card ${index === currentSlide ? 'active' : ''}`}
-                style={{ '--gradient': testimonial.gradient }}
+                key={`${testimonial.id}-${index}`}
+                className="testimonial-card"
+                style={{ 
+                  '--gradient': testimonial.gradient,
+                  '--card-index': index
+                }}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
               >
                 <div className="testimonial-content">
                   <div className="testimonial-header">
@@ -83,23 +145,26 @@ const Testimonials = () => {
             ))}
           </div>
           
+          {/* Navigation Arrows */}
           <div className="testimonials-navigation">
             <button 
               className="nav-button prev" 
-              onClick={prevSlide}
+              onClick={handlePrev}
+              disabled={isAnimating}
               aria-label="Previous testimonial"
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 12H4M4 12L10 6M4 12L10 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
             <button 
               className="nav-button next" 
-              onClick={nextSlide}
+              onClick={handleNext}
+              disabled={isAnimating}
               aria-label="Next testimonial"
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
           </div>

@@ -7,7 +7,18 @@
   background: #15141D40;
   border-bottom: none;
   z-index: 1000;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.header-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.header-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .header .container {
