@@ -51,7 +51,7 @@ const Services = () => {
       <div className="container">
         <div className="section-header">
           <p className="section-category">OUR SERVICES</p>
-          <h2 className="section-title">How We Can Help You</h2>
+          <h2 className="section-title help-title">How We Can Help You</h2>
           <p className="section-subtitle">
             We welcome opportunities to work alongside different teams over projects of any complexity
           </p>

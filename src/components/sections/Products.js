@@ -19,7 +19,7 @@ const Products = () => {
           <div className="products-text">
             <div className="section-header">
               <p className="section-category">OUR PRODUCTS</p>
-              <h2 className="section-title">
+              <h2 className="section-title product-title">
                 ChatApplication | Prior Authorization Insight Hub
               </h2>
               <p className="section-description">

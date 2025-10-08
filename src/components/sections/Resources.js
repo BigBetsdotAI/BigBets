@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 
 const Resources = () => {
   const categories = [
@@ -26,14 +26,38 @@ const Resources = () => {
     }
   ];
 
+  // Mobile swipe state
+  const [activeIndex, setActiveIndex] = useState(0);
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+  const handleTouchEnd = () => {
+    if (touchStartX.current !== null && touchEndX.current !== null) {
+      const diff = touchStartX.current - touchEndX.current;
+      if (diff > 50 && activeIndex < articles.length - 1) {
+        setActiveIndex(activeIndex + 1);
+      } else if (diff < -50 && activeIndex > 0) {
+        setActiveIndex(activeIndex - 1);
+      }
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  // Responsive: show carousel on mobile, grid on desktop
   return (
     <section className="resources">
       <div className="container">
         <div className="section-header">
           <p className="section-category">OUR BLOGS</p>
-          <h2 className="section-title">Our Useful Resources</h2>
+          <h2 className="section-title resources-title">Our Useful Resources</h2>
         </div>
-        
         <div className="resource-categories">
           {categories.map((category, index) => (
             <button key={index} className={`category-btn ${index === 0 ? 'active' : ''}`}>
@@ -41,7 +65,7 @@ const Resources = () => {
             </button>
           ))}
         </div>
-        
+        {/* Desktop grid */}
         <div className="articles-grid">
           {articles.map((article, index) => (
             <div key={index} className="article-card">
@@ -57,6 +81,45 @@ const Resources = () => {
               </div>
             </div>
           ))}
+        </div>
+        {/* Mobile carousel */}
+        <div className="articles-carousel-grid">
+          <div className="articles-carousel">
+            <div
+              className="article-card"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              style={{
+                transition: 'transform 0.3s',
+                width: '100%',
+                maxWidth: 400,
+                margin: '0 auto',
+                display: 'block',
+              }}
+            >
+              <div className="article-image">
+                <img src={articles[activeIndex].image} alt={articles[activeIndex].title} />
+              </div>
+              <div className="article-content">
+                <h3 className="article-title">{articles[activeIndex].title}</h3>
+                <p className="article-description">{articles[activeIndex].description}</p>
+                <button className="read-more-btn">
+                  READ MORE →
+                </button>
+              </div>
+            </div>
+            {/* Dots */}
+            <div className="carousel-dots">
+              {articles.map((_, idx) => (
+                <span
+                  key={idx}
+                  className={`carousel-dot${activeIndex === idx ? ' active' : ''}`}
+                  onClick={() => setActiveIndex(idx)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

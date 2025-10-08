@@ -99,7 +99,7 @@ const Testimonials = () => {
     <section id="testimonials" className="testimonials">
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">What our clients say</h2>
+          <h2 className="section-title testimonials-title">What our clients say</h2>
           <p className="section-subtitle">
             Rmet facilisi arcu odio urna aenean erat. Pellentesque in vitae lobortis orci tincidunt facilisis. Pulvinar lacus ultricies turpis urna sapien.
           </p>

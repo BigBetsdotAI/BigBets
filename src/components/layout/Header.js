@@ -14,16 +14,12 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
-      // Show header when scrolling up or at the top
-      if (currentScrollY < lastScrollY || currentScrollY < 10) {
+      // Always hide header when scrolling (except at very top)
+      if (currentScrollY > 10) {
+        setIsVisible(false);
+      } else {
         setIsVisible(true);
       }
-      // Hide header when scrolling down
-      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
-      }
-
       setLastScrollY(currentScrollY);
     };
 
