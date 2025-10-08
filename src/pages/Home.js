@@ -91,10 +91,10 @@ const Home = () => {
               <div className="footer-section">
                 <h4 className="footer-title">Company</h4>
                 <ul className="footer-list">
-                  <li><a href="/about" className="footer-link">About us</a></li>
-                  <li><a href="/contact" className="footer-link">Contact us</a></li>
-                  <li><a href="/careers" className="footer-link">Careers</a></li>
-                  <li><a href="/blogs" className="footer-link">Blogs</a></li>
+                  <li><a href="#" className="footer-link" onClick={e => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openContactModal')); }}>About us</a></li>
+                  <li><a href="#" className="footer-link" onClick={e => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openContactModal')); }}>Contact us</a></li>
+                  <li><a href="#" className="footer-link" onClick={e => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openContactModal')); }}>Careers</a></li>
+                  <li><a href="#" className="footer-link" onClick={e => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openContactModal')); }}>Blogs</a></li>
                 </ul>
               </div>
 

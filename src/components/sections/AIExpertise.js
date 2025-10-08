@@ -28,7 +28,10 @@ const AIExpertise = () => {
                 Rorem ipsum dolor sit amet consectetur. Ac quam sem mi nibh volutpat enim pellentesque. Proin iaculis nisl et neque sed fermentum sollicitudin lectus. Rorem ipsum dolor sit amet consectetur. Ac quam sem mi nibh volutpat enim pellentesque. Proin iaculis nisl et neque sed fermentum sollicitudin lectus.
               </p>
               
-              <button className="btn btn-outline btn-large">
+              <button className="btn btn-outline btn-large" onClick={() => {
+                const event = new CustomEvent('openContactModal');
+                window.dispatchEvent(event);
+              }}>
                 Learn More
               </button>
             </div>

@@ -3,6 +3,11 @@ import heroAbstractFlow from '../../assets/images/hero-abstract-flow.png';
 import '../../styles/hero-new.css';
 
 const Hero = () => {
+  // Custom event to open contact modal in Header
+  const openContactModal = () => {
+    const event = new CustomEvent('openContactModal');
+    window.dispatchEvent(event);
+  };
   return (
     <section 
       id="home" 
@@ -37,10 +42,10 @@ const Hero = () => {
             
             {/* Buttons */}
             <div className="hero-buttons">
-              <button className="hero-btn">
+              <button className="hero-btn" onClick={openContactModal}>
                 Book a Demo
               </button>
-              <button className="hero-btn">
+              <button className="hero-btn" onClick={openContactModal}>
                 GenAI Demo
               </button>
             </div>

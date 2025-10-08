@@ -154,13 +154,13 @@
 .btn {
   padding: 14px 28px;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 10;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
-  border: 2px solid;
+  border: 1px solid #5a73ff;;
 }
 
 .btn-outline {

@@ -27,10 +27,14 @@ const Header = () => {
       setLastScrollY(currentScrollY);
     };
 
+    const handleOpenContactModal = () => setIsContactModalOpen(true);
+
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('openContactModal', handleOpenContactModal);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('openContactModal', handleOpenContactModal);
     };
   }, [lastScrollY]);
 
@@ -49,12 +53,14 @@ const Header = () => {
             <li><a href="#products" className="nav-link">Products</a></li>
             <li><a href="#testimonials" className="nav-link">Testimonials</a></li>
           </ul>
-          <button 
-            onClick={() => setIsContactModalOpen(true)} 
-            className="btn btn-primary contact-btn"
-          >
-            Contact US
-          </button>
+          <div className="nav-contact-btn-wrapper">
+            <button
+              onClick={() => setIsContactModalOpen(true)}
+              className="btn btn-primary contact-btn header-contact-btn contact-btn-white"
+            >
+              Contact US
+            </button>
+          </div>
         </nav>
 
         <ContactModal 
