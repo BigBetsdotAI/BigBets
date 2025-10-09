@@ -141,7 +141,7 @@
 @media (max-width: 768px) {
   /* Body text */
   body, .body-text, .section-description, .article-description, .testimonial-text p, .product-description, .contact-description {
-    font-size: 16px !important;
+    font-size: 13px !important;
   }
   /* Headings (H1) */
   h1, .section-title, .hero-heading, .ai-expertise-title, .product-title, .testimonials-title, .resources-title {
@@ -150,12 +150,12 @@
   }
   /* Subheadings (H2–H3) */
   h2, h3, .section-category, .section-header h2, .section-header h3 {
-    font-size: 20px !important;
+    font-size: 17px !important;
     line-height: 1.25 !important;
   }
   /* Buttons / CTAs */
   button, .btn, .hero-btn, .category-btn, .read-more-btn {
-    font-size: 17px !important;
+    font-size: 12px !important;
     min-height: 44px;
   }
   /* Navigation / Menus */
@@ -1923,7 +1923,7 @@ stats {
 
 .article-title {
   font-size: 1.15rem;
-  font-weight: 600;
+  font-weight: 300;
   color: #ffffff;
   margin-bottom: 1rem;
   line-height: 1.4;
@@ -1941,7 +1941,7 @@ stats {
   border: none;
   color: #ffffff;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 300;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
