@@ -183,7 +183,7 @@
 .header-contact-btn {
   position: absolute;
   right: var(--spacing-xl);
-  top: -34%;
+  top: -50%;
   /* transform: translateY(10%); */
   z-index: 1;
 }
