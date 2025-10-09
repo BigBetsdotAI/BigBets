@@ -1,8 +1,17 @@
 @media (max-width: 768px) {
+  .services-.section-header .section-subtitle {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@media (max-width: 768px) {
   .trusted-by {
     margin-top: 2.5rem;
     margin-bottom: 0.5rem;
   }
+  
+
 }
 .ai-expertise {
   padding: 0rem 0;
@@ -83,7 +92,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 0;
+            padding: 60px 28px 31px 13px;
     margin: 0;
     gap: 2.2rem;
     transition: none;
@@ -145,12 +154,12 @@
   }
   /* Headings (H1) */
   h1, .section-title, .hero-heading, .ai-expertise-title, .product-title, .testimonials-title, .resources-title {
-    font-size: 28px !important;
+    font-size: 21px !important;
     line-height: 1.2 !important;
   }
   /* Subheadings (H2–H3) */
   h2, h3, .section-category, .section-header h2, .section-header h3 {
-    font-size: 17px !important;
+    font-size: 18px !important;
     line-height: 1.25 !important;
   }
   /* Buttons / CTAs */
