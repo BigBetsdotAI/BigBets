@@ -16,7 +16,8 @@
 }
 
 .btn:focus {
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+  /* remove focus shadow for buttons (keep other focus affordances if needed) */
+  box-shadow: none !important;
 }
 
 .btn:disabled {
@@ -28,12 +29,12 @@
 .btn-primary {
   background: var(--gradient-primary);
   color: var(--text-primary);
-  box-shadow: var(--shadow-md);
+  box-shadow: none !important;
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-purple);
+  box-shadow: none !important;
 }
 
 .btn-secondary {
@@ -45,6 +46,7 @@
 .btn-secondary:hover:not(:disabled) {
   background: var(--color-primary);
   color: var(--text-primary);
+  box-shadow: none !important;
 }
 
 .btn-outline {
@@ -58,6 +60,7 @@
   background: rgba(139, 92, 246, 0.1);
   border-color: var(--color-primary);
   color: var(--color-primary);
+  box-shadow: none !important;
 }
 
 .btn-ghost {
@@ -69,6 +72,25 @@
 .btn-ghost:hover:not(:disabled) {
   background: rgba(139, 92, 246, 0.1);
   color: var(--color-primary);
+  box-shadow: none !important;
+}
+
+/* Explicitly ensure no button shadows anywhere */
+.btn,
+.btn *,
+.contact-btn,
+.btn-cancel,
+.btn-subscribe {
+  box-shadow: none !important;
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus,
+.contact-btn:hover,
+.btn-cancel:hover,
+.btn-subscribe:hover {
+  box-shadow: none !important;
 }
 
 /* Button Sizes */

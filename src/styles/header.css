@@ -64,6 +64,34 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+/* Desktop-only: increase header background height */
+@media (min-width: 769px) {
+  .header {
+    padding-top: 18px; /* increase top padding to make background taller */
+    padding-bottom: 18px; /* increase bottom padding */
+    /* keep layout of inner container unchanged by using taller spacing */
+  }
+  .header .container {
+    margin: 24px auto; /* slightly increase vertical spacing for desktop */
+  }
+  /* Desktop: slightly smaller logo and tighter contact button */
+  .logo, .logo-accent {
+    width: 140px;
+    height: 34px;
+    font-size: 24px;
+    line-height: 34px;
+  }
+  .contact-btn {
+    /* pill-style small button like the "Get In Touch" example */
+    padding: 8px 18px !important;
+    border-radius: 24px !important;
+    min-width: auto;
+    font-size: 0.95rem;
+    line-height: 1;
+  }
+
+}
+
 .header-visible {
   transform: translateY(0);
   opacity: 1;
@@ -95,8 +123,8 @@
   width: 160px;
   height: 38px;
   font-style: normal;
-  font-weight: 700;
-  font-size: 32px;
+  font-weight: 600;
+  font-size: 25px;
   line-height: 38px;
   letter-spacing: -0.14px;
   color: #ffffff;
@@ -108,8 +136,8 @@
   width: 160px;
   height: 38px;
   font-style: normal;
-  font-weight: 700;
-  font-size: 32px;
+  font-weight: 600;
+  font-size: 25px;
   line-height: 38px;
   letter-spacing: -0.14px;
   background: linear-gradient(90deg, #7186FF 11%, #FE7587 100%);
@@ -168,7 +196,7 @@
 }
 
 .contact-btn {
-  padding: 14px 42px !important;
+  padding: 7px 0px !important;
   border-radius: 35px !important;
   padding: 1rem 2rem;
   color: rgb(255, 255, 255);
@@ -176,14 +204,15 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  min-width: 180px;
+  min-width: 140px;
   width: auto;
+  height: 43px;
 }
 
 .header-contact-btn {
   position: absolute;
   right: var(--spacing-xl);
-  top: -50%;
+  top: -29%;
   /* transform: translateY(10%); */
   z-index: 1;
 }

@@ -1589,6 +1589,8 @@ body {
 }
 
 .read-more-btn {
+  background: transparent;
+  border: none;
   color: #8B5CF6;
   font-weight: 500;
   background: none;
@@ -1599,6 +1601,42 @@ body {
 
 .read-more-btn:hover {
   color: #3B82F6;
+  box-shadow: none !important;
+}
+
+/* Specific Learn More button: apply Contact Us pill effect here only */
+.learn-more-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  padding: 8px 18px;
+  border-radius: 24px;
+  min-width: 120px;
+  justify-content: center;
+  box-shadow: none !important;
+}
+
+.learn-more-btn:hover {
+  color: #ffffff;
+  background-color: #5a73ff;
+  transform: translateY(-2px);
+  box-shadow: none !important;
+}
+
+/* Ensure learn-more hover wins over .btn-outline rules */
+.ai-expertise .learn-more-btn:hover,
+.container .learn-more-btn:hover,
+.learn-more-btn:hover {
+  background-color: #5a73ff !important;
+  color: #ffffff !important;
+  border-color: #5a73ff !important;
 }
 
 /* Footer */

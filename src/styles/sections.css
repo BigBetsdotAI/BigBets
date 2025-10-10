@@ -164,8 +164,8 @@
   }
   /* Buttons / CTAs */
   button, .btn, .hero-btn, .category-btn, .read-more-btn {
-    font-size: 12px !important;
-    min-height: 44px;
+    font-size: 11px !important;
+    min-height: 35px;
   }
   /* Navigation / Menus */
   nav, .nav-link, .header-link, .mobile-nav-link {
@@ -193,6 +193,13 @@
     font-size: 0.95rem;
     flex: 0 0 auto;
     margin-bottom: 0 !important;
+  }
+
+  /* Make the first four category buttons slightly smaller on mobile
+     (BI and Big Data, Data Science and AI Solutions, ML Consulting..., All Case Studies) */
+  .resource-categories .category-btn:nth-child(-n+4) {
+    /* font-size: 0.875rem !important; 14px */
+    padding: 6px 10px !important;
   }
 }
 @media (max-width: 768px) {
@@ -1557,7 +1564,7 @@ stats {
   flex-shrink: 0;
   margin: 0;
   z-index: 2;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Gradient backgrounds removed */
@@ -1857,7 +1864,7 @@ stats {
 .resource-categories {
   display: flex;
   gap: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
 }
 
@@ -1957,11 +1964,59 @@ stats {
   gap: 0.5rem;
   transition: all 0.3s ease;
   padding: 0;
+  box-shadow: none !important;
 }
 
 .read-more-btn:hover {
   color: #8B5CF6;
   transform: translateX(5px);
+  box-shadow: none !important;
+}
+
+/* Specific Learn More button: apply Contact Us pill effect here only */
+.learn-more-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  padding: 8px 18px;
+  border-radius: 24px;
+  min-width: 120px;
+  justify-content: center;
+  box-shadow: none !important;
+}
+
+.learn-more-btn:hover {
+  color: #ffffff;
+  background-color: #5a73ff;
+  transform: translateY(-2px);
+  box-shadow: none !important;
+}
+
+/* Stronger, higher-specificity overrides to beat .btn-outline hover rules */
+.ai-expertise .learn-more-btn:hover,
+.container .learn-more-btn:hover,
+.learn-more-btn:hover {
+  background-color: #5a73ff !important;
+  color: #ffffff !important;
+  border-color: #5a73ff !important;
+}
+
+/* Remove any shadows or outlines when the Learn More / Read More buttons are
+   focused or active (e.g., after clicking). Keep :focus-visible off only for
+   mouse/keyboard accessibility where appropriate. */
+.read-more-btn:active,
+.read-more-btn:focus,
+.read-more-btn:focus-visible {
+  box-shadow: none !important;
+  outline: none !important;
+  transform: none !important; /* avoid persistent translate on active */
 }
 
 .resources-grid {
