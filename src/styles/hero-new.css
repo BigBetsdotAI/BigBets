@@ -54,7 +54,7 @@
 }
 
 .hero-heading {
-  font-size: 2.5rem;
+  font-size: 2rem;
   line-height: 1.2;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
@@ -70,7 +70,7 @@
 
 .hero-heading-white {
   color: white;
-  font-size: 2.8rem;
+  font-size: 2rem;
   display: inline-block;
   margin-top: 2rem;
   white-space: nowrap;
@@ -82,7 +82,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-size: 2.8rem;
+  font-size: 2rem;
   color: transparent;
   white-space: nowrap;
   font-weight: 400;
@@ -98,7 +98,7 @@
 
 @media (min-width: 768px) {
   .hero-paragraph {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
 }
 
@@ -119,11 +119,11 @@
 .hero-btn {
   border-radius: 9999px;
   padding: 1rem 2rem;
-  border: 1px solid #5a73ff;
+  border: 1px solid #8B5CF6;
   color: white;
   background: transparent;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
   min-width: 180px;
@@ -131,7 +131,7 @@
 }
 
 .hero-btn:hover {
-  background-color: #5a73ff;
+  background-color: #8B5CF6;
   transform: translateY(-1px);
 }
 

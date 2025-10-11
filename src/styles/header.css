@@ -3,7 +3,7 @@
     max-width: 100vw !important;
     overflow: visible !important;
     z-index: 1000 !important;
-    max-height: 56px;
+    max-height: 80px;
   }
 }
 @media (max-width: 768px) {
@@ -108,7 +108,7 @@
   align-items: center;
   justify-content: center;
   max-width: 1200px;
-  margin: 18px auto;
+  margin: 30px auto;
   padding: 0 var(--spacing-xl);
   position: relative;
 }
@@ -218,7 +218,7 @@
 }
 
 .contact-btn:hover {
-  background-color: #5a73ff;
+  background-color: #8B5CF6;
   
 }
 

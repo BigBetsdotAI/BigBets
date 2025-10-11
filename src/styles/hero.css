@@ -115,7 +115,7 @@
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2rem, 6vw, 4.5rem);
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 1.5rem;
@@ -155,12 +155,12 @@
   padding: 14px 28px;
   border-radius: 8px;
   font-weight: 10;
-  font-size: 1rem;
+  font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
-  border: 1px solid #5a73ff;;
+  border: 1px solid #8B5CF6;;
 }
 
 .btn-outline {
@@ -174,7 +174,6 @@
   border-color: #8B5CF6;
   color: #8B5CF6;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
 }
 
 .btn-large {
@@ -379,7 +378,7 @@
 }
 
 .trust-text {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;

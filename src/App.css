@@ -39,7 +39,7 @@ body {
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
   text-align: center;
@@ -47,7 +47,7 @@ body {
 }
 
 .section-subtitle {
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: #94A3B8;
   text-align: center;
   margin-bottom: 3rem;
@@ -120,7 +120,7 @@ body {
 
 .btn-outline:hover {
   background: rgba(139, 92, 246, 0.1);
-  border-color: #8B5CF6;
+  background: #8B5CF6;
   color: #8B5CF6;
 }
 
@@ -198,6 +198,9 @@ body {
 
 .nav-links a.active {
   color: #8B5CF6;
+}
+.nav-links a:hover {
+  color: #ffffff;
 }
 
 .contact-btn {
@@ -544,7 +547,7 @@ body {
 }
 
 .showcase-content p {
-  font-size: 1.125rem;
+  font-size: 1rem;
   margin-bottom: 2rem;
   opacity: 0.9;
 }
@@ -614,7 +617,7 @@ body {
 }
 
 .about-description {
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: #4a5568;
   margin-bottom: 1.5rem;
   line-height: 1.7;
@@ -787,7 +790,7 @@ body {
 }
 
 .mission-content p {
-  font-size: 1.125rem;
+  font-size: 1rem;
   opacity: 0.9;
   max-width: 800px;
   margin: 0 auto;
@@ -826,7 +829,7 @@ body {
 }
 
 .contact-card h3 {
-  font-size: 1.125rem;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
   color: #2d3748;
 }
@@ -1004,7 +1007,7 @@ body {
   }
   
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   
   .footer-content {
@@ -1201,7 +1204,7 @@ body {
 }
 
 .stats-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 3rem;
@@ -1555,7 +1558,6 @@ body {
 .article-card:hover {
   border-color: #8B5CF6;
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
 }
 
 .article-image {
@@ -1575,7 +1577,7 @@ body {
 }
 
 .article-title {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #ffffff;
   margin-bottom: 0.75rem;
@@ -1801,7 +1803,7 @@ body {
 
 @media (max-width: 480px) {
   .section-title {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-size: clamp(1.75rem, 4vw, 2rem);
   }
   
   .hero-content {
